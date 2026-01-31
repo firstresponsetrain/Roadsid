@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Alchemy of Atlanta | Premium Automotive Services</title>
-    <!-- All styles will be in separate CSS for multi-page -->
     <style>
-        /* Base styles only - main CSS will be external */
         :root {
             --charcoal: #0a0a0a;
             --gold: #FFD700;
@@ -15,10 +13,8 @@
             --emerald: #50C878;
             --ruby: #E0115F;
             --smoke: #f8f9fa;
-            --shadow: rgba(0, 0, 0, 0.1);
             --gradient-gold: linear-gradient(135deg, #FFD700, #FFA500);
-            --gradient-platinum: linear-gradient(135deg, #E5E4E2, #C0C0C0);
-            --gradient-sapphire: linear-gradient(135deg, #0F52BA, #4169E1);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a, #0a0a0a);
         }
         
         * {
@@ -31,12 +27,12 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: var(--charcoal);
+            background: var(--smoke);
             overflow-x: hidden;
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -57,36 +53,31 @@
             transition: opacity 0.5s ease;
         }
         
+        .loading-content {
+            text-align: center;
+        }
+        
         .loading-logo {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-        
-        .loading-bar {
-            width: 200px;
-            height: 3px;
-            background: rgba(255, 215, 0, 0.2);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        
-        .loading-progress {
-            width: 0%;
-            height: 100%;
+            font-size: 2.5rem;
             background: var(--gradient-gold);
-            animation: loading 2s ease-in-out;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            font-weight: 800;
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--gold);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 20px;
         }
         
-        @keyframes loading {
-            0% { width: 0%; }
-            100% { width: 100%; }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
         
         /* Main Navigation */
@@ -95,7 +86,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 10, 10, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 15px 0;
@@ -106,13 +97,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
             padding: 0 20px;
         }
         
         .nav-logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             background: var(--gradient-gold);
             -webkit-background-clip: text;
@@ -120,16 +109,25 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         
         .nav-logo-icon {
-            font-size: 2rem;
+            font-size: 1.8rem;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             list-style: none;
         }
         
@@ -137,6 +135,7 @@
             color: var(--platinum);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             padding: 8px 0;
             position: relative;
             transition: color 0.3s ease;
@@ -146,41 +145,40 @@
             color: var(--gold);
         }
         
-        .nav-link:after {
+        .nav-link.active {
+            color: var(--gold);
+        }
+        
+        .nav-link.active:after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 0;
+            width: 100%;
             height: 2px;
             background: var(--gradient-gold);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover:after {
-            width: 100%;
         }
         
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
         
-        .cart-btn {
+        .cart-indicator {
             position: relative;
             background: none;
             border: none;
             color: var(--platinum);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
-            padding: 5px;
+            padding: 8px;
         }
         
         .cart-count {
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: 0;
+            right: 0;
             background: var(--ruby);
             color: white;
             font-size: 0.7rem;
@@ -190,20 +188,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: 600;
         }
         
-        .book-btn {
+        .book-now-btn {
             background: var(--gradient-gold);
             color: var(--charcoal);
             border: none;
-            padding: 10px 25px;
-            border-radius: 25px;
+            padding: 10px 20px;
+            border-radius: 20px;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
         
-        .book-btn:hover {
+        .book-now-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
@@ -213,22 +213,34 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.7)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: var(--gradient-dark);
             padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
         }
         
         .hero-content {
+            position: relative;
+            z-index: 1;
             text-align: center;
             color: white;
             max-width: 800px;
             margin: 0 auto;
+            padding: 20px;
         }
         
         .hero-title {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 800;
             margin-bottom: 20px;
             background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
@@ -243,7 +255,7 @@
         }
         
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--platinum);
             margin-bottom: 40px;
             line-height: 1.8;
@@ -252,17 +264,19 @@
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-bottom: 50px;
+            gap: 30px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
         }
         
         .stat-item {
             text-align: center;
+            flex: 1;
+            min-width: 120px;
         }
         
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             background: var(--gradient-gold);
             -webkit-background-clip: text;
@@ -272,29 +286,33 @@
         
         .stat-label {
             color: var(--platinum);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            opacity: 0.9;
         }
         
         .hero-cta {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
         
-        .btn-primary {
-            background: var(--gradient-gold);
-            color: var(--charcoal);
-            padding: 15px 35px;
-            border-radius: 30px;
+        .btn {
+            padding: 14px 30px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--charcoal);
         }
         
         .btn-primary:hover {
@@ -305,11 +323,6 @@
         .btn-secondary {
             background: transparent;
             color: var(--gold);
-            padding: 15px 35px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
             border: 2px solid var(--gold);
         }
         
@@ -318,19 +331,19 @@
             transform: translateY(-3px);
         }
         
-        /* Services Preview */
-        .services-preview {
-            padding: 100px 0;
+        /* Services Grid */
+        .services-section {
+            padding: 80px 0;
             background: var(--smoke);
         }
         
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         
         .section-title {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--charcoal);
             margin-bottom: 15px;
@@ -338,80 +351,186 @@
         
         .section-subtitle {
             color: #666;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 30px;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .category-tab {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #eee;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .category-tab:hover {
+            border-color: var(--gold);
+            color: var(--charcoal);
+        }
+        
+        .category-tab.active {
+            background: var(--gradient-gold);
+            border-color: transparent;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+        
+        .budget-filter {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .budget-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #eee;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .budget-btn:hover {
+            border-color: var(--gold);
+        }
+        
+        .budget-btn.active {
+            background: var(--gradient-gold);
+            border-color: transparent;
+            color: var(--charcoal);
+            font-weight: 600;
         }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
         
         .service-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
         
-        .service-icon {
-            height: 150px;
+        .service-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            z-index: 1;
+        }
+        
+        .badge-essential {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .badge-premium {
             background: var(--gradient-gold);
+            color: var(--charcoal);
+        }
+        
+        .badge-elite {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+        
+        .service-header {
+            height: 160px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem;
-            color: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-header.detailing { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .service-header.correction { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .service-header.coating { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .service-header.audio { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .service-header.marine { background: linear-gradient(135deg, #fa709a, #fee140); }
+        .service-header.tint { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+        .service-header.ppf { background: linear-gradient(135deg, #30cfd0, #330867); }
+        .service-header.wrap { background: linear-gradient(135deg, #fad0c4, #ffd1ff); }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: white;
+            opacity: 0.9;
         }
         
         .service-content {
-            padding: 30px;
+            padding: 25px;
         }
         
         .service-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: var(--charcoal);
+            line-height: 1.3;
         }
         
         .service-description {
             color: #666;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-        
-        .service-price {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--charcoal);
-            margin-bottom: 20px;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
         
         .service-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 6px;
+            margin-bottom: 15px;
         }
         
         .service-tag {
-            background: var(--smoke);
+            background: #f8f9fa;
             color: #666;
-            padding: 5px 12px;
-            border-radius: 15px;
+            padding: 4px 10px;
+            border-radius: 12px;
             font-size: 0.8rem;
             font-weight: 500;
+        }
+        
+        .service-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--charcoal);
+            margin-bottom: 20px;
         }
         
         .service-actions {
@@ -420,12 +539,14 @@
         }
         
         .btn-sm {
-            padding: 8px 20px;
+            padding: 10px 20px;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
             flex: 1;
             text-align: center;
         }
@@ -433,78 +554,34 @@
         .btn-add {
             background: var(--charcoal);
             color: white;
-            border: none;
-            cursor: pointer;
         }
         
         .btn-add:hover {
             background: #333;
+            transform: translateY(-2px);
         }
         
         .btn-details {
             background: transparent;
             color: var(--charcoal);
-            border: 2px solid var(--charcoal);
+            border: 2px solid #ddd;
         }
         
         .btn-details:hover {
-            background: var(--charcoal);
-            color: white;
+            border-color: var(--charcoal);
+            transform: translateY(-2px);
         }
         
-        /* Floating Cart */
-        .floating-cart {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-        }
-        
-        .cart-toggle {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--charcoal);
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
-            transition: all 0.3s ease;
-            border: none;
-        }
-        
-        .cart-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
-        }
-        
-        .cart-toggle .badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--ruby);
-            color: white;
-            font-size: 0.8rem;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-        
+        /* Cart Panel */
         .cart-panel {
             position: fixed;
             top: 0;
-            right: -400px;
-            width: 400px;
-            height: 100vh;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
             background: white;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
             z-index: 1001;
             transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
@@ -515,71 +592,102 @@
             right: 0;
         }
         
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .cart-overlay.active {
+            display: block;
+        }
+        
         .cart-header {
             padding: 25px;
             border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: var(--charcoal);
+            color: white;
         }
         
         .cart-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: var(--charcoal);
         }
         
         .close-cart {
             background: none;
             border: none;
+            color: white;
             font-size: 1.5rem;
-            color: #666;
             cursor: pointer;
             padding: 5px;
         }
         
-        .cart-items {
+        .cart-content {
             flex: 1;
             overflow-y: auto;
             padding: 20px;
         }
         
+        .cart-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+        
+        .cart-empty-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.3;
+        }
+        
         .cart-item {
             display: flex;
+            align-items: center;
             gap: 15px;
             padding: 15px;
-            background: var(--smoke);
-            border-radius: 10px;
-            margin-bottom: 15px;
-            align-items: center;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 12px;
         }
         
         .cart-item-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-gold);
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: var(--charcoal);
+            color: white;
+            font-size: 1.2rem;
             flex-shrink: 0;
         }
         
         .cart-item-details {
             flex: 1;
+            min-width: 0;
         }
         
         .cart-item-name {
             font-weight: 600;
             color: var(--charcoal);
             margin-bottom: 5px;
+            font-size: 0.95rem;
         }
         
         .cart-item-price {
             color: var(--charcoal);
             font-weight: 700;
+            font-size: 1.1rem;
         }
         
         .cart-item-remove {
@@ -587,22 +695,65 @@
             border: none;
             color: #e74c3c;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             padding: 5px;
+            flex-shrink: 0;
         }
         
         .cart-footer {
-            padding: 25px;
+            padding: 20px;
             border-top: 1px solid #eee;
             background: white;
+        }
+        
+        .vehicle-selector {
+            margin-bottom: 20px;
+        }
+        
+        .vehicle-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--charcoal);
+            font-size: 0.95rem;
+        }
+        
+        .vehicle-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        
+        .vehicle-option {
+            padding: 10px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .vehicle-option:hover {
+            border-color: var(--gold);
+        }
+        
+        .vehicle-option.selected {
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.1);
+            font-weight: 600;
+        }
+        
+        .cart-summary {
+            margin-bottom: 20px;
         }
         
         .cart-total {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--charcoal);
         }
@@ -614,8 +765,7 @@
         }
         
         .btn-checkout {
-            width: 100%;
-            padding: 15px;
+            padding: 14px;
             background: var(--gradient-gold);
             color: var(--charcoal);
             border: none;
@@ -624,6 +774,7 @@
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            width: 100%;
         }
         
         .btn-checkout:hover {
@@ -632,7 +783,6 @@
         }
         
         .btn-clear {
-            width: 100%;
             padding: 12px;
             background: transparent;
             color: #666;
@@ -642,6 +792,7 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            width: 100%;
         }
         
         .btn-clear:hover {
@@ -656,7 +807,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.9);
             display: none;
             justify-content: center;
             align-items: center;
@@ -675,10 +826,23 @@
             max-width: 500px;
             max-height: 90vh;
             overflow-y: auto;
-            padding: 40px;
+            position: relative;
+        }
+        
+        .checkout-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #666;
+            cursor: pointer;
+            z-index: 1;
         }
         
         .form-step {
+            padding: 40px;
             display: none;
         }
         
@@ -692,7 +856,7 @@
         }
         
         .step-title {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--charcoal);
             margin-bottom: 10px;
@@ -700,6 +864,7 @@
         
         .step-subtitle {
             color: #666;
+            font-size: 0.95rem;
         }
         
         .form-group {
@@ -711,6 +876,7 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--charcoal);
+            font-size: 0.95rem;
         }
         
         .form-input {
@@ -720,11 +886,13 @@
             border-radius: 10px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
+            font-family: inherit;
         }
         
         .form-input:focus {
             outline: none;
             border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
         }
         
         .form-actions {
@@ -733,7 +901,7 @@
             margin-top: 30px;
         }
         
-        .btn-back {
+        .btn-outline {
             padding: 12px 25px;
             background: transparent;
             color: #666;
@@ -744,247 +912,9 @@
             transition: all 0.3s ease;
         }
         
-        .btn-back:hover {
+        .btn-outline:hover {
             border-color: #999;
             color: #333;
-        }
-        
-        .btn-next {
-            padding: 12px 25px;
-            background: var(--gradient-gold);
-            color: var(--charcoal);
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-next:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-        }
-        
-        .vehicle-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .vehicle-option {
-            padding: 15px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .vehicle-option:hover {
-            border-color: var(--gold);
-            background: rgba(255, 215, 0, 0.05);
-        }
-        
-        .vehicle-option.selected {
-            border-color: var(--gold);
-            background: rgba(255, 215, 0, 0.1);
-        }
-        
-        /* Service Tier Badges */
-        .tier-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
-        .tier-essential {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-        
-        .tier-premium {
-            background: var(--gradient-gold);
-            color: var(--charcoal);
-        }
-        
-        .tier-elite {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            color: white;
-        }
-        
-        /* Price Range Display */
-        .price-range {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .price-from {
-            font-size: 1rem;
-            color: #666;
-        }
-        
-        .price-amount {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--charcoal);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .cart-panel {
-                width: 100%;
-                right: -100%;
-            }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .checkout-form {
-                padding: 20px;
-            }
-        }
-        
-        /* Service Icons */
-        .service-icon.detailing { background: linear-gradient(135deg, #667eea, #764ba2); }
-        .service-icon.correction { background: linear-gradient(135deg, #f093fb, #f5576c); }
-        .service-icon.coating { background: linear-gradient(135deg, #4facfe, #00f2fe); }
-        .service-icon.audio { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-        .service-icon.marine { background: linear-gradient(135deg, #fa709a, #fee140); }
-        .service-icon.tint { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
-        .service-icon.ppf { background: linear-gradient(135deg, #30cfd0, #330867); }
-        .service-icon.wrap { background: linear-gradient(135deg, #fad0c4, #ffd1ff); }
-        
-        /* Service Cards Container for Horizontal Scroll */
-        .service-cards-container {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 20px 0;
-            margin: 0 -20px;
-            padding-left: 20px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--gold) transparent;
-        }
-        
-        .service-cards-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        
-        .service-cards-container::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        
-        .service-cards-container::-webkit-scrollbar-thumb {
-            background: var(--gold);
-            border-radius: 3px;
-        }
-        
-        .service-card-horizontal {
-            min-width: 300px;
-            flex-shrink: 0;
-        }
-        
-        /* Quick Booking Widget */
-        .quick-booking {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            padding: 25px;
-            width: 350px;
-            z-index: 998;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .quick-booking.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .quick-booking-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .quick-booking-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--charcoal);
-        }
-        
-        .close-quick-booking {
-            background: none;
-            border: none;
-            color: #666;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 5px;
-        }
-        
-        /* Vehicle Type Selector */
-        .vehicle-type-selector {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .vehicle-type-btn {
-            padding: 12px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            font-weight: 500;
-        }
-        
-        .vehicle-type-btn:hover {
-            border-color: var(--gold);
-            background: rgba(255, 215, 0, 0.05);
-        }
-        
-        .vehicle-type-btn.active {
-            border-color: var(--gold);
-            background: rgba(255, 215, 0, 0.1);
-            color: var(--charcoal);
-            font-weight: 600;
-        }
-        
-        /* Add to Cart Animation */
-        @keyframes addToCart {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        
-        .added-to-cart {
-            animation: addToCart 0.3s ease;
         }
         
         /* Service Quick View */
@@ -994,7 +924,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             display: none;
             justify-content: center;
             align-items: center;
@@ -1009,14 +939,14 @@
         .quick-view-content {
             background: white;
             border-radius: 20px;
-            max-width: 800px;
             width: 100%;
+            max-width: 600px;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
         }
         
-        .close-quick-view {
+        .quick-view-close {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -1028,127 +958,400 @@
             z-index: 1;
         }
         
-        /* Service Packages Grid */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            max-width: 300px;
+            height: 100%;
+            background: var(--charcoal);
+            z-index: 1004;
+            transition: left 0.3s ease;
+            padding: 80px 30px 30px;
         }
         
-        .package-card-compact {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            border: 2px solid #eee;
-            transition: all 0.3s ease;
-            position: relative;
+        .mobile-menu.active {
+            left: 0;
         }
         
-        .package-card-compact:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.8rem;
+            cursor: pointer;
         }
         
-        .package-header-compact {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+        .mobile-nav-links {
+            list-style: none;
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 15px 0;
+            color: var(--platinum);
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        
+        .mobile-nav-link.active {
+            color: var(--gold);
+        }
+        
+        /* Animation for Add to Cart */
+        @keyframes addToCart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .added-to-cart {
+            animation: addToCart 0.3s ease;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-item {
+                min-width: 100px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-panel {
+                max-width: 100%;
+            }
+            
+            .vehicle-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-step {
+                padding: 30px 20px;
+            }
+            
+            .category-tabs {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+                margin: 0 -20px 30px;
+                padding-left: 20px;
+            }
+            
+            .category-tab {
+                flex-shrink: 0;
+            }
+            
+            .budget-filter {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+                margin: 0 -20px 30px;
+                padding-left: 20px;
+            }
+            
+            .budget-btn {
+                flex-shrink: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .service-actions {
+                flex-direction: column;
+            }
+            
+            .cart-header {
+                padding: 20px;
+            }
+        }
+        
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-gold {
+            color: var(--gold);
+        }
+        
+        .mb-20 {
             margin-bottom: 20px;
         }
         
-        .package-name {
+        .mb-30 {
+            margin-bottom: 30px;
+        }
+        
+        .mt-20 {
+            margin-top: 20px;
+        }
+        
+        .mt-30 {
+            margin-top: 30px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: var(--platinum);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
             font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--charcoal);
         }
         
-        .package-price-compact {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--charcoal);
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .footer-section p {
+            color: #aaa;
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
         
-        /* Budget Filter */
-        .budget-filter {
+        .footer-contact {
+            list-style: none;
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
             display: flex;
+            align-items: flex-start;
             gap: 10px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-            justify-content: center;
         }
         
-        .budget-btn {
-            padding: 10px 20px;
-            border: 2px solid #eee;
-            border-radius: 25px;
-            background: white;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
+        .footer-contact i {
+            color: var(--gold);
+            font-style: normal;
         }
         
-        .budget-btn:hover {
-            border-color: var(--gold);
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Service Count Indicator */
+        .service-count {
+            display: inline-block;
+            background: var(--gold);
             color: var(--charcoal);
-        }
-        
-        .budget-btn.active {
-            background: var(--gradient-gold);
-            border-color: transparent;
-            color: var(--charcoal);
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 5px;
             font-weight: 600;
+        }
+        
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--charcoal);
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: none;
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
     </style>
 </head>
 <body>
     <!-- Loading Screen -->
     <div id="loadingScreen">
-        <div class="loading-logo">⚡ Auto Alchemy</div>
-        <div class="loading-bar">
-            <div class="loading-progress"></div>
+        <div class="loading-content">
+            <div class="loading-logo">⚡ Auto Alchemy</div>
+            <div class="loading-spinner"></div>
+            <div style="color: var(--gold); font-size: 0.9rem;">Crafting Your Experience...</div>
         </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="closeMobileMenu">&times;</button>
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="mobile-nav-link active">Home</a></li>
+            <li><a href="#services" class="mobile-nav-link">Services</a></li>
+            <li><a href="#detailing" class="mobile-nav-link">Detailing</a></li>
+            <li><a href="#correction" class="mobile-nav-link">Paint Correction</a></li>
+            <li><a href="#coating" class="mobile-nav-link">Ceramic Coating</a></li>
+            <li><a href="#audio" class="mobile-nav-link">Custom Audio</a></li>
+            <li><a href="#marine" class="mobile-nav-link">Marine Services</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
     </div>
 
     <!-- Main Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="#" class="nav-logo">
+            <a href="#home" class="nav-logo">
                 <span class="nav-logo-icon">⚡</span>
                 Auto Alchemy
             </a>
             
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            
             <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#packages" class="nav-link">Packages</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#detailing" class="nav-link">Detailing</a></li>
+                <li><a href="#correction" class="nav-link">Correction</a></li>
+                <li><a href="#coating" class="nav-link">Coating</a></li>
+                <li><a href="#audio" class="nav-link">Audio</a></li>
             </ul>
             
             <div class="nav-actions">
-                <button class="cart-btn" id="navCartBtn">
+                <button class="cart-indicator" id="cartButton">
                     🛒
                     <span class="cart-count">0</span>
                 </button>
-                <button class="book-btn" id="bookNowBtn">Book Now</button>
+                <button class="book-now-btn" id="bookNowButton">Book Now</button>
             </div>
         </div>
     </nav>
 
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Cart Panel -->
+    <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Selection</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        
+        <div class="cart-content" id="cartContent">
+            <!-- Cart items will be loaded here -->
+        </div>
+        
+        <div class="cart-footer">
+            <div class="vehicle-selector">
+                <div class="vehicle-label">Vehicle Type:</div>
+                <div class="vehicle-options">
+                    <div class="vehicle-option" data-type="car" data-factor="1">🚗 Car</div>
+                    <div class="vehicle-option selected" data-type="suv" data-factor="1.3">🚙 SUV</div>
+                    <div class="vehicle-option" data-type="truck" data-factor="1.5">🛻 Truck</div>
+                    <div class="vehicle-option" data-type="luxury" data-factor="1.8">🏎️ Luxury</div>
+                    <div class="vehicle-option" data-type="motorcycle" data-factor="0.6">🏍️ Bike</div>
+                    <div class="vehicle-option" data-type="boat" data-factor="2">🚤 Boat</div>
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Estimated Total:</span>
+                    <span>$<span id="cartTotal">0</span></span>
+                </div>
+            </div>
+            
+            <div class="cart-actions">
+                <button class="btn-checkout" id="checkoutButton">Proceed to Booking</button>
+                <button class="btn-clear" id="clearCartButton">Clear All</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero-section" id="home">
+        <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Automotive Transformation Redefined</h1>
                 <p class="hero-subtitle">
                     Where meticulous craftsmanship meets cutting-edge technology. From daily drivers to exotic collectibles, 
-                    we elevate every vehicle with precision detailing, paint perfection, and custom enhancements that tell your story.
+                    we elevate every vehicle with precision detailing, paint perfection, and custom enhancements.
                 </p>
                 
                 <div class="hero-stats">
@@ -1164,29 +1367,34 @@
                         <div class="stat-number">47</div>
                         <div class="stat-label">Certifications</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Support</div>
-                    </div>
                 </div>
                 
                 <div class="hero-cta">
-                    <button class="btn-primary" id="exploreServicesBtn">Explore Our Services</button>
-                    <button class="btn-secondary" id="virtualConsultBtn">Virtual Consultation</button>
+                    <button class="btn btn-primary" id="exploreServices">Explore Services</button>
+                    <button class="btn btn-secondary" id="scheduleConsult">Schedule Consultation</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Preview -->
-    <section class="services-preview" id="services">
+    <!-- Services Section -->
+    <section class="services-section" id="services">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Premium Automotive Services</h2>
                 <p class="section-subtitle">From essential maintenance to elite-level transformations, discover services tailored to your needs and budget.</p>
                 
-                <div class="budget-filter">
-                    <button class="budget-btn active" data-budget="all">All Services</button>
+                <div class="category-tabs" id="categoryTabs">
+                    <button class="category-tab active" data-category="all">All Services</button>
+                    <button class="category-tab" data-category="detailing">Detailing</button>
+                    <button class="category-tab" data-category="correction">Paint Correction</button>
+                    <button class="category-tab" data-category="coating">Ceramic Coating</button>
+                    <button class="category-tab" data-category="audio">Custom Audio</button>
+                    <button class="category-tab" data-category="marine">Marine Services</button>
+                </div>
+                
+                <div class="budget-filter" id="budgetFilter">
+                    <button class="budget-btn active" data-budget="all">All Budgets</button>
                     <button class="budget-btn" data-budget="under-100">Under $100</button>
                     <button class="budget-btn" data-budget="100-300">$100-$300</button>
                     <button class="budget-btn" data-budget="300-800">$300-$800</button>
@@ -1194,56 +1402,17 @@
                 </div>
             </div>
             
-            <div class="service-cards-container" id="servicesContainer">
-                <!-- Service cards will be generated by JavaScript -->
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded dynamically -->
             </div>
         </div>
     </section>
 
-    <!-- Floating Cart -->
-    <div class="floating-cart">
-        <button class="cart-toggle" id="cartToggle">
-            🛒
-            <span class="badge" id="cartBadge">0</span>
-        </button>
-    </div>
-
-    <!-- Cart Panel -->
-    <div class="cart-panel" id="cartPanel">
-        <div class="cart-header">
-            <h3 class="cart-title">Your Selection</h3>
-            <button class="close-cart" id="closeCart">&times;</button>
-        </div>
-        
-        <div class="cart-items" id="cartItems">
-            <!-- Cart items will be added here -->
-        </div>
-        
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Estimated Total:</span>
-                <span>$<span id="cartTotal">0</span></span>
-            </div>
-            
-            <div class="vehicle-type-selector" id="vehicleSelector">
-                <button class="vehicle-type-btn" data-type="car" data-factor="1">🚗 Car</button>
-                <button class="vehicle-type-btn" data-type="suv" data-factor="1.3">🚙 SUV</button>
-                <button class="vehicle-type-btn active" data-type="truck" data-factor="1.5">🛻 Truck</button>
-                <button class="vehicle-type-btn" data-type="motorcycle" data-factor="0.6">🏍️ Bike</button>
-                <button class="vehicle-type-btn" data-type="luxury" data-factor="1.8">🏎️ Luxury</button>
-                <button class="vehicle-type-btn" data-type="boat" data-factor="2">🚤 Boat</button>
-            </div>
-            
-            <div class="cart-actions">
-                <button class="btn-checkout" id="checkoutBtn">Proceed to Booking</button>
-                <button class="btn-clear" id="clearCartBtn">Clear All</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Checkout Modal -->
     <div class="checkout-modal" id="checkoutModal">
         <div class="checkout-form">
+            <button class="checkout-close" id="closeCheckout">&times;</button>
+            
             <!-- Step 1: Contact Information -->
             <div class="form-step active" id="step1">
                 <div class="step-header">
@@ -1267,8 +1436,8 @@
                 </div>
                 
                 <div class="form-actions">
-                    <button class="btn-back" id="closeCheckout">Cancel</button>
-                    <button class="btn-next" id="nextToStep2">Next →</button>
+                    <button class="btn-outline" id="cancelCheckout">Cancel</button>
+                    <button class="btn btn-primary" id="nextToStep2">Next</button>
                 </div>
             </div>
             
@@ -1304,8 +1473,8 @@
                 </div>
                 
                 <div class="form-actions">
-                    <button class="btn-back" id="backToStep1">← Back</button>
-                    <button class="btn-next" id="nextToStep3">Next →</button>
+                    <button class="btn-outline" id="backToStep1">Back</button>
+                    <button class="btn btn-primary" id="nextToStep3">Next</button>
                 </div>
             </div>
             
@@ -1318,7 +1487,7 @@
                 
                 <div class="form-group">
                     <label class="form-label">Special Instructions</label>
-                    <textarea class="form-input" rows="4" placeholder="Any specific requests or concerns..."></textarea>
+                    <textarea class="form-input" rows="3" placeholder="Any specific requests or concerns..."></textarea>
                 </div>
                 
                 <div class="form-group">
@@ -1333,39 +1502,79 @@
                 </div>
                 
                 <div class="form-actions">
-                    <button class="btn-back" id="backToStep2">← Back</button>
-                    <button class="btn-next" id="submitBooking">Submit Booking</button>
+                    <button class="btn-outline" id="backToStep2">Back</button>
+                    <button class="btn btn-primary" id="submitBooking">Submit Booking</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Quick Booking Widget -->
-    <div class="quick-booking" id="quickBooking">
-        <div class="quick-booking-header">
-            <h4 class="quick-booking-title">Quick Add Services</h4>
-            <button class="close-quick-booking" id="closeQuickBooking">&times;</button>
-        </div>
-        
-        <div class="packages-grid" id="quickServices">
-            <!-- Quick add services will be generated here -->
+    <!-- Service Quick View -->
+    <div class="service-quick-view" id="serviceQuickView">
+        <div class="quick-view-content" id="quickViewContent">
+            <!-- Content loaded dynamically -->
         </div>
     </div>
 
-    <!-- Service Quick View Modal -->
-    <div class="service-quick-view" id="serviceQuickView">
-        <div class="quick-view-content" id="quickViewContent">
-            <!-- Content will be generated by JavaScript -->
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Auto Alchemy of Atlanta</h3>
+                    <p>Atlanta's premier automotive transformation specialists. We bring showroom perfection to your driveway.</p>
+                    <ul class="footer-contact">
+                        <li><i>📞</i> <a href="tel:678-551-8278">678-551-8278</a></li>
+                        <li><i>📍</i> Serving North & Northeast Atlanta Metro</li>
+                        <li><i>🏠</i> Base: Suwanee, Georgia</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">All Services</a></li>
+                        <li><a href="#detailing">Detailing Packages</a></li>
+                        <li><a href="#correction">Paint Correction</a></li>
+                        <li><a href="#coating">Ceramic Coating</a></li>
+                        <li><a href="#audio">Custom Audio</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Service Areas</h3>
+                    <p>Forsyth County, Fulton County, Hall County, Gwinnett County, Dawson County, Lumpkin County, White County, Barrow County, and surrounding areas.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Business Hours</h3>
+                    <ul class="footer-contact">
+                        <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
+                        <li>Saturday: 9:00 AM - 5:00 PM</li>
+                        <li>Sunday: By appointment only</li>
+                        <li>Mobile Service Available</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Auto Alchemy of Atlanta. All rights reserved. | Premium Automotive Detailing, Paint Correction, Ceramic Coating & Custom Audio Installation</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Serving Atlanta's automotive enthusiasts with excellence since 2023.</p>
+            </div>
         </div>
-    </div>
+    </footer>
 
     <script>
         // Application State
         let cart = [];
-        let currentVehicle = 'truck';
-        let vehicleFactor = 1.5;
+        let currentVehicle = 'suv';
+        let vehicleFactor = 1.3;
         let currentStep = 1;
-        let servicesData = [];
+        let filteredServices = [];
         
         // Service Database
         const services = [
@@ -1385,8 +1594,7 @@
                     'Wheel & tire cleaning',
                     'Quick-dry towel finish',
                     'Windows inside & out'
-                ],
-                addons: ['Clay Bar Treatment +$35', 'Spray Wax +$25']
+                ]
             },
             {
                 id: 'interior-revival',
@@ -1658,76 +1866,6 @@
                     'Corrosion-resistant wiring',
                     'Professional marine installation'
                 ]
-            },
-            
-            // Additional Services
-            {
-                id: 'window-tint',
-                name: 'Window Tint',
-                category: 'tint',
-                tier: 'essential',
-                icon: '🕶️',
-                description: 'Keep Atlanta heat out and privacy in. Ceramic tint blocks UV rays while maintaining visibility and style.',
-                price: 299,
-                tags: ['Tint', 'UV Protection', 'Privacy'],
-                features: [
-                    'Ceramic window film',
-                    'Lifetime warranty',
-                    'UV & heat rejection',
-                    'Professional installation',
-                    'All windows'
-                ]
-            },
-            {
-                id: 'paint-protection',
-                name: 'Paint Protection Film',
-                category: 'ppf',
-                tier: 'elite',
-                icon: '🛡️',
-                description: 'Self-healing film protects against rock chips, bug stains, and minor abrasions. Keep your paint flawless.',
-                price: 1999,
-                tags: ['PPF', 'Protection', 'Self-Healing'],
-                features: [
-                    'Premium self-healing film',
-                    'Full front or complete coverage',
-                    'Edge wrapping technology',
-                    '10-year warranty',
-                    'Invisible protection'
-                ]
-            },
-            {
-                id: 'vinyl-wrap',
-                name: 'Vinyl Wrap',
-                category: 'wrap',
-                tier: 'premium',
-                icon: '🎨',
-                description: 'Change your vehicle\'s color without commitment. Premium vinyl protects your paint while expressing your style.',
-                price: 2999,
-                tags: ['Wrap', 'Color Change', 'Protection'],
-                features: [
-                    'Premium cast vinyl',
-                    'Full color change',
-                    '3M or Avery materials',
-                    '3-5 year lifespan',
-                    'Paint protection underneath'
-                ]
-            },
-            {
-                id: 'headlight-restoration',
-                name: 'Headlight Restoration',
-                category: 'detailing',
-                tier: 'essential',
-                icon: '💡',
-                description: 'Yellow, cloudy headlights restored to crystal clarity. Improve visibility and restore your vehicle\'s appearance.',
-                price: 99,
-                tags: ['Headlights', 'Restoration', 'Safety'],
-                features: [
-                    'Wet sanding & polishing',
-                    'UV protective coating',
-                    'Lens clarity restoration',
-                    '2-year warranty',
-                    'Improved night visibility'
-                ]
             }
         ];
         
@@ -1737,85 +1875,57 @@
                 document.getElementById('loadingScreen').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('loadingScreen').style.display = 'none';
+                    initializeApp();
                 }, 500);
-                
-                initializeApp();
-            }, 2000);
+            }, 1500);
         });
         
         function initializeApp() {
-            servicesData = [...services];
+            filteredServices = [...services];
             renderServices();
             setupEventListeners();
             updateCartDisplay();
+            setupScrollListener();
             
-            // Add subtle animations
-            animateElements();
-        }
-        
-        function renderServices() {
-            const container = document.getElementById('servicesContainer');
-            container.innerHTML = '';
-            
-            servicesData.forEach(service => {
-                const adjustedPrice = Math.round(service.price * vehicleFactor);
-                const card = document.createElement('div');
-                card.className = 'service-card service-card-horizontal';
-                card.dataset.id = service.id;
-                card.dataset.price = service.price;
-                card.dataset.category = service.category;
-                card.dataset.tier = service.tier;
-                
-                card.innerHTML = `
-                    <div class="service-icon ${service.category}">
-                        ${service.icon}
-                        <span class="tier-badge tier-${service.tier}">${service.tier}</span>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">${service.name}</h3>
-                        <p class="service-description">${service.description}</p>
-                        <div class="service-tags">
-                            ${service.tags.map(tag => `<span class="service-tag">${tag}</span>`).join('')}
-                        </div>
-                        <div class="price-range">
-                            <span class="price-from">from</span>
-                            <span class="price-amount">$${adjustedPrice}</span>
-                        </div>
-                        <div class="service-actions">
-                            <button class="btn-sm btn-add" onclick="addToCart('${service.id}')">Add to Cart</button>
-                            <button class="btn-sm btn-details" onclick="showServiceDetails('${service.id}')">Details</button>
-                        </div>
-                    </div>
-                `;
-                
-                container.appendChild(card);
-            });
+            // Animate service cards on load
+            setTimeout(animateServiceCards, 300);
         }
         
         function setupEventListeners() {
-            // Cart toggle
-            document.getElementById('cartToggle').addEventListener('click', toggleCart);
-            document.getElementById('navCartBtn').addEventListener('click', toggleCart);
-            document.getElementById('closeCart').addEventListener('click', toggleCart);
+            // Mobile menu
+            document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
+            document.getElementById('closeMobileMenu').addEventListener('click', closeMobileMenu);
             
-            // Checkout
-            document.getElementById('checkoutBtn').addEventListener('click', openCheckout);
-            document.getElementById('closeCheckout').addEventListener('click', closeCheckout);
+            // Cart
+            document.getElementById('cartButton').addEventListener('click', openCart);
+            document.getElementById('closeCart').addEventListener('click', closeCart);
+            document.getElementById('cartOverlay').addEventListener('click', closeCart);
             
-            // Vehicle type selection
-            document.querySelectorAll('.vehicle-type-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('.vehicle-type-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    currentVehicle = this.dataset.type;
-                    vehicleFactor = parseFloat(this.dataset.factor);
-                    
-                    // Update all prices
-                    updateCartDisplay();
-                    renderServices();
+            // Vehicle selection
+            document.querySelectorAll('.vehicle-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    selectVehicle(this.dataset.type, parseFloat(this.dataset.factor));
                 });
             });
+            
+            // Category tabs
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    filterByCategory(this.dataset.category);
+                });
+            });
+            
+            // Budget filter
+            document.querySelectorAll('.budget-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterByBudget(this.dataset.budget);
+                });
+            });
+            
+            // Checkout
+            document.getElementById('checkoutButton').addEventListener('click', openCheckout);
+            document.getElementById('closeCheckout').addEventListener('click', closeCheckout);
+            document.getElementById('cancelCheckout').addEventListener('click', closeCheckout);
             
             // Checkout steps
             document.getElementById('nextToStep2').addEventListener('click', () => navigateCheckout(2));
@@ -1827,44 +1937,98 @@
             document.getElementById('submitBooking').addEventListener('click', submitBooking);
             
             // Clear cart
-            document.getElementById('clearCartBtn').addEventListener('click', clearCart);
+            document.getElementById('clearCartButton').addEventListener('click', clearCart);
             
             // Book now button
-            document.getElementById('bookNowBtn').addEventListener('click', () => {
+            document.getElementById('bookNowButton').addEventListener('click', () => {
                 if (cart.length === 0) {
-                    showQuickBooking();
+                    document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
                 } else {
                     openCheckout();
                 }
             });
             
             // Explore services
-            document.getElementById('exploreServicesBtn').addEventListener('click', () => {
+            document.getElementById('exploreServices').addEventListener('click', () => {
                 document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
             });
             
-            // Virtual consultation
-            document.getElementById('virtualConsultBtn').addEventListener('click', () => {
-                alert('Virtual consultation feature coming soon! Call us at 678-551-8278 to schedule.');
+            // Schedule consultation
+            document.getElementById('scheduleConsult').addEventListener('click', () => {
+                alert('Schedule a consultation by calling 678-551-8278 or add services to your cart to book online.');
             });
             
-            // Budget filter
-            document.querySelectorAll('.budget-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('.budget-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    filterServices(this.dataset.budget);
-                });
+            // Scroll to top
+            document.getElementById('scrollTop').addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
             
-            // Close quick booking
-            document.getElementById('closeQuickBooking')?.addEventListener('click', hideQuickBooking);
-            
-            // Close service quick view
-            document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('service-quick-view')) {
-                    hideServiceDetails();
+            // Close quick view when clicking outside
+            document.getElementById('serviceQuickView').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeServiceDetails();
                 }
+            });
+        }
+        
+        function renderServices() {
+            const container = document.getElementById('servicesGrid');
+            container.innerHTML = '';
+            
+            if (filteredServices.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+                        <div style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;">🔍</div>
+                        <h3 style="color: #666; margin-bottom: 10px;">No services found</h3>
+                        <p style="color: #999;">Try adjusting your filters to see more options.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredServices.forEach(service => {
+                const adjustedPrice = Math.round(service.price * vehicleFactor);
+                const badgeClass = `badge-${service.tier}`;
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                
+                card.innerHTML = `
+                    <div class="service-header ${service.category}">
+                        <div class="service-icon">${service.icon}</div>
+                        <div class="service-badge ${badgeClass}">${service.tier}</div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">${service.name}</h3>
+                        <p class="service-description">${service.description}</p>
+                        <div class="service-tags">
+                            ${service.tags.map(tag => `<span class="service-tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="service-price">$${adjustedPrice}</div>
+                        <div class="service-actions">
+                            <button class="btn-sm btn-add" onclick="addToCart('${service.id}')">Add to Cart</button>
+                            <button class="btn-sm btn-details" onclick="showServiceDetails('${service.id}')">View Details</button>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+            
+            // Re-animate cards
+            setTimeout(animateServiceCards, 100);
+        }
+        
+        function animateServiceCards() {
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
             });
         }
         
@@ -1876,7 +2040,7 @@
             const existingIndex = cart.findIndex(item => item.id === serviceId);
             
             if (existingIndex > -1) {
-                // Remove if already in cart
+                // Remove from cart
                 cart.splice(existingIndex, 1);
             } else {
                 // Add to cart
@@ -1899,6 +2063,11 @@
                     button.textContent = existingIndex > -1 ? 'Add to Cart' : 'Remove';
                 }, 1000);
             }, 300);
+            
+            // Open cart if adding first item
+            if (cart.length === 1 && window.innerWidth > 768) {
+                openCart();
+            }
         }
         
         function removeFromCart(index) {
@@ -1907,17 +2076,20 @@
         }
         
         function updateCartDisplay() {
-            // Update cart count
             const count = cart.length;
-            document.getElementById('cartBadge').textContent = count;
-            document.querySelector('.cart-count').textContent = count;
+            document.getElementById('cartButton').querySelector('.cart-count').textContent = count;
             
-            // Update cart items
-            const container = document.getElementById('cartItems');
+            const container = document.getElementById('cartContent');
             const totalElement = document.getElementById('cartTotal');
             
             if (count === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Your cart is empty</p>';
+                container.innerHTML = `
+                    <div class="cart-empty">
+                        <div class="cart-empty-icon">🛒</div>
+                        <h3>Your cart is empty</h3>
+                        <p>Add services to get started</p>
+                    </div>
+                `;
                 totalElement.textContent = '0';
                 return;
             }
@@ -1931,9 +2103,7 @@
                 
                 html += `
                     <div class="cart-item">
-                        <div class="cart-item-icon ${item.category}">
-                            ${item.icon}
-                        </div>
+                        <div class="cart-item-icon">${item.icon}</div>
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-price">$${adjustedPrice}</div>
@@ -1947,8 +2117,148 @@
             totalElement.textContent = total;
         }
         
-        function toggleCart() {
-            document.getElementById('cartPanel').classList.toggle('active');
+        function selectVehicle(type, factor) {
+            currentVehicle = type;
+            vehicleFactor = factor;
+            
+            // Update selected state
+            document.querySelectorAll('.vehicle-option').forEach(option => {
+                option.classList.remove('selected');
+                if (option.dataset.type === type) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            // Update cart display and services
+            updateCartDisplay();
+            renderServices();
+        }
+        
+        function filterByCategory(category) {
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.category === category) {
+                    tab.classList.add('active');
+                }
+            });
+            
+            if (category === 'all') {
+                filteredServices = [...services];
+            } else {
+                filteredServices = services.filter(service => service.category === category);
+            }
+            
+            renderServices();
+        }
+        
+        function filterByBudget(budget) {
+            // Update active button
+            document.querySelectorAll('.budget-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.budget === budget) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            let filtered = [...filteredServices];
+            
+            switch(budget) {
+                case 'under-100':
+                    filtered = filtered.filter(s => s.price < 100);
+                    break;
+                case '100-300':
+                    filtered = filtered.filter(s => s.price >= 100 && s.price <= 300);
+                    break;
+                case '300-800':
+                    filtered = filtered.filter(s => s.price > 300 && s.price <= 800);
+                    break;
+                case '800-plus':
+                    filtered = filtered.filter(s => s.price > 800);
+                    break;
+                // 'all' shows all services
+            }
+            
+            filteredServices = filtered;
+            renderServices();
+        }
+        
+        function showServiceDetails(serviceId) {
+            const service = services.find(s => s.id === serviceId);
+            if (!service) return;
+            
+            const adjustedPrice = Math.round(service.price * vehicleFactor);
+            const container = document.getElementById('quickViewContent');
+            
+            container.innerHTML = `
+                <button class="quick-view-close" onclick="closeServiceDetails()">&times;</button>
+                <div style="padding: 40px 30px 30px;">
+                    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+                        <div class="service-header ${service.category}" style="width: 80px; height: 80px; border-radius: 15px;">
+                            <div class="service-icon">${service.icon}</div>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.8rem; margin-bottom: 10px; color: var(--charcoal);">${service.name}</h3>
+                            <div style="display: flex; gap: 10px;">
+                                <span class="badge-${service.tier}" style="padding: 5px 15px; border-radius: 15px; font-size: 0.8rem;">${service.tier}</span>
+                                <span style="background: #333; color: white; padding: 5px 15px; border-radius: 15px; font-size: 0.8rem;">${service.category}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 25px; border-radius: 15px; margin-bottom: 30px;">
+                        <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 10px;">$${adjustedPrice}</div>
+                        <p style="opacity: 0.9; font-size: 1rem; line-height: 1.6;">${service.description}</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="margin-bottom: 15px; font-size: 1.2rem; color: var(--charcoal);">What's Included:</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            ${service.features.map(feature => `
+                                <li style="padding: 12px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #50C878; font-size: 1.2rem;">✓</span>
+                                    <span style="color: #555;">${feature}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 40px;">
+                        <button class="btn btn-primary" onclick="addToCart('${service.id}'); closeServiceDetails();" style="flex: 1;">Add to Cart - $${adjustedPrice}</button>
+                        <button class="btn btn-secondary" onclick="closeServiceDetails()" style="flex: 1;">Close</button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('serviceQuickView').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeServiceDetails() {
+            document.getElementById('serviceQuickView').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function openCart() {
+            document.getElementById('cartPanel').classList.add('active');
+            document.getElementById('cartOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeCart() {
+            document.getElementById('cartPanel').classList.remove('active');
+            document.getElementById('cartOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
         
         function openCheckout() {
@@ -1957,6 +2267,7 @@
                 return;
             }
             
+            closeCart();
             document.getElementById('checkoutModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -2029,151 +2340,53 @@
         function clearCart() {
             cart = [];
             updateCartDisplay();
-            toggleCart();
+            closeCart();
         }
         
-        function showQuickBooking() {
-            const widget = document.getElementById('quickBooking');
-            widget.classList.add('active');
+        function setupScrollListener() {
+            const scrollTopBtn = document.getElementById('scrollTop');
             
-            // Populate quick services
-            const container = document.getElementById('quickServices');
-            const popularServices = services.filter(s => s.tier === 'essential' || s.tier === 'premium').slice(0, 6);
-            
-            container.innerHTML = popularServices.map(service => {
-                const adjustedPrice = Math.round(service.price * vehicleFactor);
-                return `
-                    <div class="package-card-compact">
-                        <div class="package-header-compact">
-                            <div class="package-name">${service.name}</div>
-                            <div class="package-price-compact">$${adjustedPrice}</div>
-                        </div>
-                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">${service.description.substring(0, 80)}...</p>
-                        <button class="btn-sm btn-add" onclick="addToCart('${service.id}'); hideQuickBooking();" style="width: 100%;">Add +</button>
-                    </div>
-                `;
-            }).join('');
-        }
-        
-        function hideQuickBooking() {
-            document.getElementById('quickBooking').classList.remove('active');
-        }
-        
-        function showServiceDetails(serviceId) {
-            const service = services.find(s => s.id === serviceId);
-            if (!service) return;
-            
-            const adjustedPrice = Math.round(service.price * vehicleFactor);
-            const container = document.getElementById('quickViewContent');
-            
-            container.innerHTML = `
-                <button class="close-quick-view" onclick="hideServiceDetails()">&times;</button>
-                <div style="padding: 40px;">
-                    <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
-                        <div class="service-icon ${service.category}" style="width: 80px; height: 80px; font-size: 2.5rem;">
-                            ${service.icon}
-                        </div>
-                        <div>
-                            <h3 style="font-size: 2rem; margin-bottom: 10px;">${service.name}</h3>
-                            <div style="display: flex; gap: 10px;">
-                                <span class="tier-badge tier-${service.tier}">${service.tier}</span>
-                                <span style="background: #333; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">${service.category}</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px;">
-                        <div style="font-size: 3rem; font-weight: 800; margin-bottom: 10px;">$${adjustedPrice}</div>
-                        <p style="opacity: 0.9; font-size: 1.1rem;">${service.description}</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 30px;">
-                        <h4 style="margin-bottom: 15px; font-size: 1.2rem;">What's Included:</h4>
-                        <ul style="list-style: none; padding: 0;">
-                            ${service.features.map(feature => `
-                                <li style="padding: 10px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px;">
-                                    <span style="color: #50C878; font-size: 1.2rem;">✓</span>
-                                    <span>${feature}</span>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                    
-                    ${service.addons ? `
-                        <div style="margin-bottom: 30px;">
-                            <h4 style="margin-bottom: 15px; font-size: 1.2rem;">Available Add-ons:</h4>
-                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                ${service.addons.map(addon => `
-                                    <span style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem;">${addon}</span>
-                                `).join('')}
-                            </div>
-                        </div>
-                    ` : ''}
-                    
-                    <div style="display: flex; gap: 15px;">
-                        <button class="btn-primary" onclick="addToCart('${service.id}'); hideServiceDetails();" style="flex: 1;">Add to Cart - $${adjustedPrice}</button>
-                        <button class="btn-secondary" onclick="hideServiceDetails()" style="flex: 1;">Close</button>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById('serviceQuickView').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function hideServiceDetails() {
-            document.getElementById('serviceQuickView').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function filterServices(budget) {
-            let filtered = [...services];
-            
-            switch(budget) {
-                case 'under-100':
-                    filtered = services.filter(s => s.price < 100);
-                    break;
-                case '100-300':
-                    filtered = services.filter(s => s.price >= 100 && s.price <= 300);
-                    break;
-                case '300-800':
-                    filtered = services.filter(s => s.price > 300 && s.price <= 800);
-                    break;
-                case '800-plus':
-                    filtered = services.filter(s => s.price > 800);
-                    break;
-                // 'all' shows all services
-            }
-            
-            servicesData = filtered;
-            renderServices();
-        }
-        
-        function animateElements() {
-            // Animate service cards on scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.service-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
             });
         }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu if open
+                    closeMobileMenu();
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
         
         // Expose functions to global scope
         window.addToCart = addToCart;
         window.removeFromCart = removeFromCart;
         window.showServiceDetails = showServiceDetails;
-        window.hideServiceDetails = hideServiceDetails;
-        window.hideQuickBooking = hideQuickBooking;
+        window.closeServiceDetails = closeServiceDetails;
     </script>
 </body>
 </html>
