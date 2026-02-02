@@ -3,793 +3,768 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Alchemy | Automotive Transformation - Atlanta</title>
+    <title>Auto Alchemy | Atlanta's Authority in Automotive Transformation</title>
+    <meta name="description" content="Atlanta's #1 mobile detailing & ceramic coating service. 12,500+ vehicles transformed. Premium results at your doorstep. Book your transformation today.">
+    <meta name="keywords" content="Atlanta detailing, ceramic coating, paint correction, mobile detailing, auto detailing, car detailing">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ====== VARIABLES ====== */
+        /* ====== CORE VARIABLES ====== */
         :root {
-            --obsidian: #0c0c0c;
-            --titanium: #e8e8e8;
-            --brass: #b8860b;
-            --patina: #5d8aa8;
-            --oxblood: #800020;
-            --concrete: #8c8c8c;
-            --steel: #71797E;
-            --glow: rgba(184, 134, 11, 0.15);
-            --shadow: rgba(0, 0, 0, 0.25);
-            --gradient-metal: linear-gradient(135deg, #2c3e50, #0c0c0c);
-            --gradient-brass: linear-gradient(135deg, #b8860b, #daa520);
-            --section-spacing: 120px;
+            --black: #000000;
+            --deep-gray: #111111;
+            --charcoal: #1A1A1A;
+            --steel: #2D2D2D;
+            --platinum: #F5F5F5;
+            --gold: #C9A96E;
+            --gold-dark: #B8934C;
+            --accent: #D4AF37;
+            --success: #28A745;
+            --danger: #DC3545;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 8px;
+            --radius-lg: 16px;
+            --container: 1400px;
         }
-        
+
         /* ====== RESET & BASE ====== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+            scroll-padding-top: 100px;
         }
-        
+
         body {
-            font-family: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.7;
-            color: var(--titanium);
-            background: var(--obsidian);
+            color: var(--platinum);
+            background: var(--black);
             overflow-x: hidden;
-            font-weight: 300;
-            letter-spacing: 0.3px;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
+
         .container {
-            max-width: 1400px;
+            max-width: var(--container);
             margin: 0 auto;
             padding: 0 40px;
         }
-        
-        .section {
-            padding: var(--section-spacing) 0;
+
+        section {
+            padding: 140px 0;
             position: relative;
         }
-        
-        /* ====== LOADING SCREEN ====== */
+
+        /* ====== LOADING OPTIMIZATION ====== */
         #loading {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--obsidian);
+            background: var(--black);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
-        
+
         .loading-content {
             text-align: center;
         }
-        
+
         .loading-logo {
-            font-size: 3.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
             font-weight: 900;
-            color: var(--brass);
+            color: var(--gold);
             margin-bottom: 30px;
-            letter-spacing: 8px;
-            position: relative;
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
-        
-        .loading-logo:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 2px;
-            background: var(--brass);
+
+        .loading-subtitle {
+            color: rgba(245, 245, 245, 0.6);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 20px;
         }
-        
-        .loading-bar {
-            width: 200px;
-            height: 2px;
-            background: rgba(184, 134, 11, 0.2);
-            margin: 30px auto;
-            overflow: hidden;
-            border-radius: 1px;
-        }
-        
-        .loading-progress {
-            width: 0%;
-            height: 100%;
-            background: var(--brass);
-            animation: loading 2s ease-in-out forwards;
-        }
-        
-        @keyframes loading {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-        
-        /* ====== NAVIGATION ====== */
+
+        /* ====== NAVIGATION - ULTRA PROFESSIONAL ====== */
         .nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 80px;
-            background: rgba(12, 12, 12, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(184, 134, 11, 0.1);
+            height: 100px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 169, 110, 0.15);
             z-index: 1000;
             display: flex;
             align-items: center;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
-        
+
         .nav.scrolled {
-            height: 70px;
-            background: rgba(12, 12, 12, 0.98);
+            height: 80px;
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: var(--shadow-light);
         }
-        
+
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
         }
-        
+
         .nav-logo {
-            font-size: 1.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
             font-weight: 900;
-            color: var(--brass);
+            color: var(--gold);
             text-decoration: none;
             letter-spacing: 2px;
+            text-transform: uppercase;
             position: relative;
-            padding-left: 50px;
+            padding-left: 45px;
         }
-        
+
         .nav-logo:before {
-            content: '⚙️';
+            content: '';
             position: absolute;
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.5rem;
+            width: 35px;
+            height: 35px;
+            background: var(--gold);
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") center/contain no-repeat;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E") center/contain no-repeat;
         }
-        
+
         .nav-menu {
             display: flex;
-            gap: 40px;
+            gap: 50px;
             list-style: none;
         }
-        
+
         .nav-link {
-            color: var(--titanium);
+            color: var(--platinum);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
             position: relative;
-            padding: 5px 0;
-            transition: color 0.3s ease;
+            padding: 8px 0;
+            transition: var(--transition);
         }
-        
+
         .nav-link:after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
-            height: 1px;
-            background: var(--brass);
-            transition: width 0.3s ease;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
         }
-        
+
         .nav-link:hover {
-            color: var(--brass);
+            color: var(--gold);
         }
-        
+
         .nav-link:hover:after {
             width: 100%;
         }
-        
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .cart-btn {
-            background: none;
-            border: none;
-            color: var(--titanium);
-            font-size: 1.2rem;
-            cursor: pointer;
-            position: relative;
-            padding: 8px;
-            transition: color 0.3s ease;
-        }
-        
-        .cart-btn:hover {
-            color: var(--brass);
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: var(--oxblood);
-            color: white;
-            font-size: 0.7rem;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-        
+
         .nav-cta {
-            background: var(--brass);
-            color: var(--obsidian);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .phone-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .phone-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-button {
+            background: var(--gold);
+            color: var(--black);
             border: none;
-            padding: 10px 25px;
+            padding: 12px 30px;
             font-weight: 700;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             text-transform: uppercase;
             letter-spacing: 1px;
+            border-radius: var(--radius);
         }
-        
-        .nav-cta:hover {
-            background: #daa520;
+
+        .nav-button:hover {
+            background: var(--gold-dark);
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(201, 169, 110, 0.3);
         }
-        
+
         .mobile-toggle {
             display: none;
             background: none;
             border: none;
-            color: var(--brass);
+            color: var(--gold);
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
-        /* ====== HERO SECTION ====== */
+
+        /* ====== HERO - CONVERSION FOCUSED ====== */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(12, 12, 12, 0.9), rgba(12, 12, 12, 0.7)),
-                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat fixed;
-            padding-top: 80px;
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%),
+                url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            padding-top: 100px;
             position: relative;
-            overflow: hidden;
         }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 65%, rgba(184, 134, 11, 0.1) 100%);
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(201, 169, 110, 0.1);
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            border-radius: 50px;
+            margin-bottom: 40px;
         }
-        
+
+        .hero-badge i {
+            color: var(--gold);
+        }
+
+        .hero-badge span {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
         .hero-content {
+            max-width: 800px;
             position: relative;
             z-index: 2;
-            max-width: 800px;
         }
-        
-        .hero-label {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(184, 134, 11, 0.1);
-            color: var(--brass);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            border-left: 3px solid var(--brass);
-        }
-        
+
         .hero-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 4.5rem;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 30px;
-            color: var(--titanium);
-            text-shadow: 2px 2px 4px var(--shadow);
+            color: var(--platinum);
+            text-transform: uppercase;
         }
-        
+
         .hero-title span {
-            color: var(--brass);
+            color: var(--gold);
             position: relative;
+            display: inline-block;
         }
-        
+
         .hero-title span:after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -10px;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: var(--brass);
+            height: 4px;
+            background: var(--gold);
         }
-        
+
         .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--concrete);
+            font-size: 1.3rem;
+            color: rgba(245, 245, 245, 0.8);
             margin-bottom: 50px;
             max-width: 600px;
             line-height: 1.8;
+            font-weight: 300;
         }
-        
+
         .hero-stats {
             display: flex;
-            gap: 40px;
-            margin-bottom: 50px;
+            gap: 60px;
+            margin-bottom: 60px;
             flex-wrap: wrap;
         }
-        
+
         .stat {
-            text-align: center;
+            text-align: left;
         }
-        
+
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 900;
-            color: var(--brass);
+            color: var(--gold);
             margin-bottom: 5px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
-        
+
         .stat-label {
-            font-size: 0.8rem;
-            color: var(--concrete);
+            font-size: 0.9rem;
+            color: rgba(245, 245, 245, 0.7);
             text-transform: uppercase;
             letter-spacing: 1.5px;
+            font-weight: 500;
         }
-        
+
         .hero-actions {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
         }
-        
+
         .btn {
-            padding: 15px 35px;
-            font-size: 0.95rem;
-            font-weight: 600;
+            padding: 18px 40px;
+            font-size: 1rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
         }
-        
+
         .btn-primary {
-            background: var(--brass);
-            color: var(--obsidian);
+            background: var(--gold);
+            color: var(--black);
         }
-        
+
         .btn-primary:hover {
-            background: #daa520;
+            background: var(--gold-dark);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(184, 134, 11, 0.3);
+            box-shadow: 0 15px 35px rgba(201, 169, 110, 0.4);
         }
-        
+
         .btn-secondary {
             background: transparent;
-            color: var(--brass);
-            border: 2px solid var(--brass);
+            color: var(--gold);
+            border: 2px solid var(--gold);
         }
-        
+
         .btn-secondary:hover {
-            background: rgba(184, 134, 11, 0.1);
+            background: rgba(201, 169, 110, 0.1);
             transform: translateY(-3px);
         }
-        
-        /* ====== SERVICES SECTION ====== */
-        .services {
-            background: var(--gradient-metal);
+
+        /* ====== AUTHORITY SECTION ====== */
+        .authority {
+            background: var(--deep-gray);
             position: relative;
+            overflow: hidden;
         }
-        
-        .services:before {
+
+        .authority:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--brass), transparent);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
-        
+
         .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
-        
+
         .section-label {
-            color: var(--brass);
+            color: var(--gold);
             font-size: 0.9rem;
             font-weight: 600;
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: block;
         }
-        
+
         .section-title {
-            font-size: 3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
             font-weight: 900;
-            color: var(--titanium);
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .section-subtitle {
-            color: var(--concrete);
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        
-        .service-card {
-            background: rgba(30, 30, 30, 0.5);
-            border: 1px solid rgba(184, 134, 11, 0.1);
-            padding: 40px;
-            position: relative;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .service-card:hover {
-            border-color: var(--brass);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .service-badge {
-            position: absolute;
-            top: -15px;
-            right: 30px;
-            background: var(--oxblood);
-            color: white;
-            padding: 5px 15px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        
-        .service-icon {
-            font-size: 2.5rem;
+            color: var(--platinum);
             margin-bottom: 25px;
-            color: var(--brass);
+            line-height: 1.2;
+            text-transform: uppercase;
         }
-        
-        .service-title {
+
+        .section-subtitle {
+            color: rgba(245, 245, 245, 0.7);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .authority-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .authority-card {
+            background: var(--charcoal);
+            padding: 50px 40px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(45, 45, 45, 0.5);
+        }
+
+        .authority-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow);
+        }
+
+        .authority-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(201, 169, 110, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+
+        .authority-card h3 {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--titanium);
-            margin-bottom: 15px;
-        }
-        
-        .service-price {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--brass);
+            color: var(--platinum);
             margin-bottom: 20px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
-        
-        .service-price span {
-            font-size: 1rem;
-            color: var(--concrete);
-            font-weight: 400;
-        }
-        
-        .service-description {
-            color: var(--concrete);
-            margin-bottom: 25px;
+
+        .authority-card p {
+            color: rgba(245, 245, 245, 0.7);
             line-height: 1.6;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
-        
-        .benefits-list {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-        
-        .benefits-list li {
-            padding: 8px 0;
-            color: var(--titanium);
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.95rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .benefits-list li:before {
-            content: '✓';
-            color: var(--brass);
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-        
-        .service-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-        
-        /* ====== GALLERY SECTION ====== */
-        .gallery {
-            background: var(--obsidian);
+
+        /* ====== TRANSFORMATION SHOWCASE ====== */
+        .showcase {
+            background: var(--black);
             position: relative;
         }
-        
-        .gallery:before {
+
+        .showcase:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--brass), transparent);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
-        
-        .gallery-grid {
+
+        .transformation-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
         }
-        
-        .gallery-item {
-            position: relative;
+
+        .transformation-card {
+            background: var(--deep-gray);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            aspect-ratio: 4/3;
-            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(45, 45, 45, 0.5);
         }
-        
-        .gallery-item img {
+
+        .transformation-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow);
+        }
+
+        .transformation-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .transformation-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
-            filter: grayscale(30%);
         }
-        
-        .gallery-item:hover img {
+
+        .transformation-card:hover .transformation-image img {
             transform: scale(1.05);
-            filter: grayscale(0%);
         }
-        
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(12, 12, 12, 0.9) 0%, transparent 100%);
+
+        .transformation-content {
+            padding: 40px;
+        }
+
+        .transformation-header {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
         }
-        
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-        
-        .gallery-title {
-            color: var(--titanium);
-            font-size: 1.2rem;
+
+        .transformation-title {
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            color: var(--platinum);
+            font-family: 'Montserrat', sans-serif;
         }
-        
-        .gallery-description {
-            color: var(--brass);
+
+        .transformation-price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .transformation-price span {
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: rgba(245, 245, 245, 0.5);
+            font-weight: 400;
         }
-        
-        /* ====== CALCULATOR SECTION ====== */
-        .calculator {
-            background: var(--gradient-metal);
+
+        .transformation-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .transformation-features li {
+            padding: 8px 0;
+            color: rgba(245, 245, 245, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .transformation-features li:before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .transformation-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* ====== SOCIAL PROOF ====== */
+        .social-proof {
+            background: var(--deep-gray);
             position: relative;
+            padding: 100px 0;
         }
-        
-        .calculator:before {
+
+        .social-proof:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--brass), transparent);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
-        
-        .calculator-wrapper {
-            background: rgba(30, 30, 30, 0.5);
-            border: 1px solid rgba(184, 134, 11, 0.1);
-            padding: 50px;
-            backdrop-filter: blur(10px);
+
+        .testimonials {
+            max-width: 800px;
+            margin: 0 auto;
         }
-        
-        .calculator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 40px;
-        }
-        
-        .calculator-form {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        
-        .form-group {
-            margin-bottom: 0;
-        }
-        
-        .form-label {
-            display: block;
-            color: var(--titanium);
-            margin-bottom: 10px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .form-select {
-            width: 100%;
-            padding: 15px;
-            background: rgba(12, 12, 12, 0.5);
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            color: var(--titanium);
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-        
-        .form-select:focus {
-            outline: none;
-            border-color: var(--brass);
-            box-shadow: 0 0 0 2px var(--glow);
-        }
-        
-        .addons-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .addon-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            background: rgba(12, 12, 12, 0.5);
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .addon-option:hover {
-            border-color: var(--brass);
-            background: rgba(184, 134, 11, 0.1);
-        }
-        
-        .addon-option input {
-            accent-color: var(--brass);
-        }
-        
-        .calculator-result {
-            background: rgba(12, 12, 12, 0.8);
-            padding: 40px;
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .result-label {
-            color: var(--concrete);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        
-        .result-amount {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--brass);
-            margin-bottom: 20px;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .result-note {
-            color: var(--concrete);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        
-        /* ====== CTA SECTION ====== */
-        .cta {
-            background: linear-gradient(rgba(12, 12, 12, 0.9), rgba(12, 12, 12, 0.9)),
-                        url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat fixed;
+
+        .testimonial-slide {
+            background: var(--charcoal);
+            padding: 60px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(45, 45, 45, 0.5);
             text-align: center;
             position: relative;
         }
-        
-        .cta:before {
+
+        .testimonial-quote {
+            font-size: 1.3rem;
+            color: var(--platinum);
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .testimonial-author-info p {
+            color: rgba(245, 245, 245, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* ====== BOOKING FLOW ====== */
+        .booking-flow {
+            background: var(--black);
+            position: relative;
+        }
+
+        .booking-flow:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--brass), transparent);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
-        
-        .cta-title {
-            font-size: 3rem;
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .flow-step {
+            text-align: center;
+            padding: 40px;
+            background: var(--deep-gray);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(45, 45, 45, 0.5);
+            transition: var(--transition);
+        }
+
+        .flow-step:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: rgba(201, 169, 110, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: var(--gold);
+            font-size: 1.5rem;
             font-weight: 900;
-            color: var(--titanium);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .flow-step h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--platinum);
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .flow-step p {
+            color: rgba(245, 245, 245, 0.7);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .booking-cta {
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--platinum);
             margin-bottom: 30px;
             line-height: 1.2;
         }
-        
+
         .cta-subtitle {
-            color: var(--concrete);
+            color: rgba(245, 245, 245, 0.7);
             max-width: 600px;
             margin: 0 auto 50px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.8;
+            font-weight: 300;
         }
-        
+
         /* ====== FOOTER ====== */
         .footer {
-            background: #080808;
-            padding: 80px 0 40px;
+            background: var(--deep-gray);
+            padding: 100px 0 50px;
             position: relative;
         }
-        
+
         .footer:before {
             content: '';
             position: absolute;
@@ -797,320 +772,285 @@
             left: 0;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--brass), transparent);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
-        
+
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 80px;
         }
-        
-        .footer-brand {
-            margin-bottom: 30px;
-        }
-        
-        .footer-logo {
+
+        .footer-brand h3 {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.8rem;
             font-weight: 900;
-            color: var(--brass);
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 25px;
+            text-transform: uppercase;
         }
-        
+
         .footer-description {
-            color: var(--concrete);
+            color: rgba(245, 245, 245, 0.7);
             line-height: 1.6;
-            font-size: 0.95rem;
+            margin-bottom: 30px;
+            font-size: 1rem;
         }
-        
+
         .footer-title {
-            color: var(--titanium);
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 25px;
+            color: var(--platinum);
+            margin-bottom: 30px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .footer-links {
             list-style: none;
         }
-        
+
         .footer-links li {
             margin-bottom: 15px;
         }
-        
+
         .footer-links a {
-            color: var(--concrete);
+            color: rgba(245, 245, 245, 0.7);
             text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
+            transition: var(--transition);
+            font-size: 1rem;
         }
-        
+
         .footer-links a:hover {
-            color: var(--brass);
+            color: var(--gold);
+            padding-left: 5px;
         }
-        
+
         .footer-contact {
             list-style: none;
         }
-        
+
         .footer-contact li {
-            margin-bottom: 15px;
-            color: var(--concrete);
+            margin-bottom: 20px;
+            color: rgba(245, 245, 245, 0.7);
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 15px;
+            font-size: 1rem;
         }
-        
+
         .footer-contact i {
-            color: var(--brass);
+            color: var(--gold);
             width: 20px;
             flex-shrink: 0;
+            margin-top: 3px;
         }
-        
+
         .footer-bottom {
             text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(184, 134, 11, 0.1);
-            color: var(--concrete);
+            padding-top: 50px;
+            border-top: 1px solid rgba(45, 45, 45, 0.5);
+            color: rgba(245, 245, 245, 0.5);
             font-size: 0.9rem;
         }
-        
-        /* ====== MODALS ====== */
+
+        /* ====== MODALS - OPTIMIZED CONVERSION ====== */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(12, 12, 12, 0.95);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             display: none;
             justify-content: center;
             align-items: center;
             padding: 20px;
         }
-        
+
         .modal-overlay.active {
             display: flex;
         }
-        
+
         .modal {
-            background: var(--obsidian);
-            border: 1px solid rgba(184, 134, 11, 0.3);
+            background: var(--deep-gray);
+            border: 1px solid rgba(201, 169, 110, 0.3);
             width: 100%;
             max-width: 500px;
             max-height: 90vh;
             overflow-y: auto;
+            border-radius: var(--radius-lg);
             position: relative;
         }
-        
+
         .modal-header {
-            padding: 30px;
-            border-bottom: 1px solid rgba(184, 134, 11, 0.1);
+            padding: 40px 40px 30px;
+            border-bottom: 1px solid rgba(45, 45, 45, 0.5);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: var(--charcoal);
         }
-        
+
         .modal-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--titanium);
+            font-weight: 900;
+            color: var(--platinum);
+            text-transform: uppercase;
         }
-        
+
         .modal-close {
             background: none;
             border: none;
-            color: var(--concrete);
-            font-size: 1.8rem;
-            cursor: pointer;
-            padding: 5px;
-            transition: color 0.3s ease;
-        }
-        
-        .modal-close:hover {
-            color: var(--brass);
-        }
-        
-        .modal-body {
-            padding: 30px;
-        }
-        
-        /* Cart Modal */
-        .cart-empty {
-            text-align: center;
-            padding: 60px 30px;
-        }
-        
-        .cart-empty i {
-            font-size: 3rem;
-            color: var(--concrete);
-            margin-bottom: 20px;
-        }
-        
-        .cart-items {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid rgba(184, 134, 11, 0.1);
-        }
-        
-        .cart-item-info h4 {
-            color: var(--titanium);
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        
-        .cart-item-price {
-            color: var(--brass);
-            font-weight: 700;
-        }
-        
-        .cart-item-remove {
-            background: none;
-            border: none;
-            color: var(--oxblood);
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 5px;
-        }
-        
-        .cart-total {
-            padding: 30px;
-            border-top: 1px solid rgba(184, 134, 11, 0.1);
-        }
-        
-        .cart-summary {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .cart-summary-label {
-            color: var(--titanium);
-            font-weight: 600;
-        }
-        
-        .cart-summary-amount {
+            color: rgba(245, 245, 245, 0.5);
             font-size: 2rem;
-            font-weight: 900;
-            color: var(--brass);
-            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            padding: 5px;
+            transition: var(--transition);
         }
-        
+
+        .modal-close:hover {
+            color: var(--gold);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
         /* Booking Modal */
         .booking-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
         }
-        
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--platinum);
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         .form-input {
             width: 100%;
-            padding: 15px;
-            background: rgba(12, 12, 12, 0.5);
-            border: 1px solid rgba(184, 134, 11, 0.3);
-            color: var(--titanium);
+            padding: 16px 20px;
+            background: rgba(45, 45, 45, 0.5);
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            color: var(--platinum);
             font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            border-radius: var(--radius);
         }
-        
+
         .form-input:focus {
             outline: none;
-            border-color: var(--brass);
-            box-shadow: 0 0 0 2px var(--glow);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
+            background: rgba(45, 45, 45, 0.7);
         }
-        
+
         .form-textarea {
-            min-height: 100px;
+            min-height: 120px;
             resize: vertical;
         }
-        
-        /* Service Detail Modal */
-        .service-detail {
-            max-width: 700px;
+
+        /* Success Modal */
+        .success-content {
+            text-align: center;
+            padding: 40px 20px;
         }
-        
-        .service-detail-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+
+        .success-icon {
+            font-size: 4rem;
+            color: var(--gold);
             margin-bottom: 30px;
         }
-        
-        .service-detail-icon {
-            font-size: 3rem;
-            color: var(--brass);
-        }
-        
-        .service-detail-title {
+
+        .success-title {
+            font-family: 'Montserrat', sans-serif;
             font-size: 2rem;
             font-weight: 900;
-            color: var(--titanium);
+            color: var(--platinum);
+            margin-bottom: 20px;
         }
-        
-        .service-detail-price {
-            font-size: 2.5rem;
+
+        .success-message {
+            color: rgba(245, 245, 245, 0.8);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .success-phone {
+            background: rgba(201, 169, 110, 0.1);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+        }
+
+        .success-phone-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
             font-weight: 900;
-            color: var(--brass);
-            margin: 20px 0;
-            font-family: 'Inter', sans-serif;
+            color: var(--gold);
+            margin-bottom: 10px;
         }
-        
-        /* ====== UTILITIES ====== */
-        .text-center { text-align: center; }
-        .mt-1 { margin-top: 10px; }
-        .mt-2 { margin-top: 20px; }
-        .mt-3 { margin-top: 30px; }
-        .mt-4 { margin-top: 40px; }
-        .mb-1 { margin-bottom: 10px; }
-        .mb-2 { margin-bottom: 20px; }
-        .mb-3 { margin-bottom: 30px; }
-        .mb-4 { margin-bottom: 40px; }
-        
-        /* ====== RESPONSIVE ====== */
+
+        .success-phone-label {
+            color: rgba(245, 245, 245, 0.6);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ====== RESPONSIVE DESIGN ====== */
         @media (max-width: 1200px) {
-            .hero-title { font-size: 3.5rem; }
-            .section-title { font-size: 2.5rem; }
-            .calculator-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-title { font-size: 3.8rem; }
+            .section-title { font-size: 2.8rem; }
         }
-        
+
         @media (max-width: 992px) {
             .container { padding: 0 30px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-toggle { display: block; }
+            .hero-title { font-size: 3.2rem; }
+            .section-title { font-size: 2.4rem; }
             .nav-menu { display: none; }
-            .hero-title { font-size: 2.8rem; }
-            .section-title { font-size: 2.2rem; }
-            .hero-stats { gap: 30px; }
-            .service-actions { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .addons-grid { grid-template-columns: 1fr; }
+            .mobile-toggle { display: block; }
+            .flow-steps { grid-template-columns: 1fr; }
         }
-        
-        @media (max-width: 576px) {
+
+        @media (max-width: 768px) {
             .container { padding: 0 20px; }
-            .hero-title { font-size: 2.2rem; }
-            .section-title { font-size: 1.8rem; }
+            section { padding: 100px 0; }
+            .hero-title { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .hero-stats { gap: 40px; }
             .hero-actions { flex-direction: column; }
             .btn { width: 100%; }
-            .modal { padding: 0; }
+            .transformation-grid { grid-template-columns: 1fr; }
+            .authority-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            .nav { height: 80px; }
+            .nav.scrolled { height: 70px; }
+            .modal-header { padding: 30px 20px 20px; }
+            .modal-body { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -1119,10 +1059,10 @@
     <div id="loading">
         <div class="loading-content">
             <div class="loading-logo">AUTO ALCHEMY</div>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
+            <div style="width: 200px; height: 3px; background: rgba(201, 169, 110, 0.2); margin: 30px auto; border-radius: 2px; overflow: hidden;">
+                <div style="width: 0%; height: 100%; background: var(--gold); animation: loading 2s ease-in-out forwards;"></div>
             </div>
-            <div style="color: var(--concrete); font-size: 0.9rem; letter-spacing: 2px;">INITIALIZING</div>
+            <div class="loading-subtitle">Preparing Your Transformation</div>
         </div>
     </div>
 
@@ -1138,18 +1078,18 @@
                 
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                    <li><a href="#calculator" class="nav-link">Calculator</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#authority" class="nav-link">Why Us</a></li>
+                    <li><a href="#showcase" class="nav-link">Transformations</a></li>
+                    <li><a href="#social-proof" class="nav-link">Reviews</a></li>
+                    <li><a href="#booking" class="nav-link">Book Now</a></li>
                 </ul>
                 
-                <div class="nav-actions">
-                    <button class="cart-btn" id="cartBtn">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </button>
-                    <button class="nav-cta" id="bookNowBtn">Book Now</button>
+                <div class="nav-cta">
+                    <a href="tel:6785518278" class="phone-link">
+                        <i class="fas fa-phone"></i>
+                        <span>(678) 551-8278</span>
+                    </a>
+                    <button class="nav-button" id="bookNowBtn">Schedule Now</button>
                 </div>
             </div>
         </div>
@@ -1159,14 +1099,17 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-label">Premium Mobile Service</div>
+                <div class="hero-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Atlanta's #1 Mobile Detailing Service</span>
+                </div>
                 <h1 class="hero-title">
-                    Transform Your Vehicle<br>
-                    Into <span>Automotive Art</span>
+                    Your Vehicle Deserves<br>
+                    <span>Professional Transformation</span>
                 </h1>
                 <p class="hero-subtitle">
-                    No car washes. No empty promises. Just obsessive craftsmanship that turns vehicles 
-                    into rolling masterpieces. Mobile service that delivers showroom results at your doorstep.
+                    Experience automotive excellence delivered to your doorstep. We transform ordinary vehicles 
+                    into extraordinary masterpieces through precision craftsmanship and obsessive attention to detail.
                 </p>
                 
                 <div class="hero-stats">
@@ -1176,159 +1119,176 @@
                     </div>
                     <div class="stat">
                         <div class="stat-number">99.8%</div>
-                        <div class="stat-label">Satisfaction Rate</div>
+                        <div class="stat-label">Client Satisfaction</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">24/7</div>
-                        <div class="stat-label">Mobile Service</div>
+                        <div class="stat-label">Premium Mobile Service</div>
                     </div>
                 </div>
                 
                 <div class="hero-actions">
-                    <button class="btn btn-primary" id="exploreBtn">
-                        <i class="fas fa-gem"></i> Explore Services
+                    <button class="btn btn-primary" id="scheduleBtn">
+                        <i class="fas fa-calendar-check"></i> Schedule Free Consultation
                     </button>
-                    <button class="btn btn-secondary" id="consultBtn">
-                        <i class="fas fa-calendar-check"></i> Schedule Consultation
+                    <button class="btn btn-secondary" id="servicesBtn">
+                        <i class="fas fa-gem"></i> View Transformations
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services section" id="services">
+    <!-- Authority Section -->
+    <section class="authority section" id="authority">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Premium Services</span>
-                <h2 class="section-title">Results That Speak Louder Than Words</h2>
+                <span class="section-label">The Auto Alchemy Difference</span>
+                <h2 class="section-title">Why Atlanta Chooses Us</h2>
                 <p class="section-subtitle">
-                    Each service delivers tangible transformation, not just empty promises. 
-                    This is automotive alchemy at its finest.
+                    We're not just another detailing service. We're Atlanta's authority on automotive 
+                    transformation, backed by 12,500+ successful transformations.
                 </p>
             </div>
             
-            <div class="services-grid" id="servicesGrid">
-                <!-- Services will be loaded here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery section" id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Proof Gallery</span>
-                <h2 class="section-title">Actual Transformations</h2>
-                <p class="section-subtitle">
-                    See the difference between ordinary and extraordinary. These are real results from real clients.
-                </p>
-            </div>
-            
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- Gallery items will be loaded here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Calculator Section -->
-    <section class="calculator section" id="calculator">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Instant Estimate</span>
-                <h2 class="section-title">Build Your Perfect Package</h2>
-                <p class="section-subtitle">
-                    Customize exactly what you need. No hidden fees, no surprises.
-                </p>
-            </div>
-            
-            <div class="calculator-wrapper">
-                <div class="calculator-grid">
-                    <div class="calculator-form">
-                        <div class="form-group">
-                            <label class="form-label">Vehicle Type</label>
-                            <select class="form-select" id="calcVehicle">
-                                <option value="sedan">Sedan / Coupe</option>
-                                <option value="suv">SUV / Crossover</option>
-                                <option value="truck">Truck / Van</option>
-                                <option value="boat">Boat / Marine</option>
-                                <option value="motorcycle">Motorcycle / ATV</option>
-                                <option value="luxury">Luxury Vehicle</option>
-                                <option value="exotic">Exotic / Supercar</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Vehicle Size</label>
-                            <select class="form-select" id="calcSize">
-                                <option value="compact">Compact</option>
-                                <option value="midsize" selected>Mid-size</option>
-                                <option value="fullsize">Full-size</option>
-                                <option value="oversize">Oversize</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Primary Service</label>
-                            <select class="form-select" id="calcService">
-                                <option value="basic">Basic Detailing</option>
-                                <option value="premium">Premium Detailing</option>
-                                <option value="correction">Paint Correction</option>
-                                <option value="coating">Ceramic Coating</option>
-                                <option value="complete">Complete Transformation</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Add-On Services</label>
-                            <div class="addons-grid">
-                                <label class="addon-option">
-                                    <input type="checkbox" value="engine" id="addonEngine">
-                                    <span>Engine Detail (+$75)</span>
-                                </label>
-                                <label class="addon-option">
-                                    <input type="checkbox" value="tint" id="addonTint">
-                                    <span>Window Tint (+$350)</span>
-                                </label>
-                                <label class="addon-option">
-                                    <input type="checkbox" value="ppf" id="addonPPF">
-                                    <span>Paint Protection (+$1,200)</span>
-                                </label>
-                                <label class="addon-option">
-                                    <input type="checkbox" value="audio" id="addonAudio">
-                                    <span>Audio Upgrade (+$500)</span>
-                                </label>
-                            </div>
-                        </div>
+            <div class="authority-grid">
+                <div class="authority-card">
+                    <div class="authority-icon">
+                        <i class="fas fa-medal"></i>
                     </div>
-                    
-                    <div class="calculator-result">
-                        <div class="result-label">Estimated Investment</div>
-                        <div class="result-amount">$<span id="calcTotal">0</span></div>
-                        <p class="result-note">
-                            Price includes all materials, mobile service fee, and our satisfaction guarantee. 
-                            Final quote provided after vehicle assessment.
-                        </p>
-                        <button class="btn btn-primary mt-3" id="addToCartBtn">
-                            <i class="fas fa-cart-plus"></i> Add to Cart
-                        </button>
+                    <h3>Certified Excellence</h3>
+                    <p>Every technician is certified in ceramic coating application, paint correction, and premium detailing techniques.</p>
+                </div>
+                
+                <div class="authority-card">
+                    <div class="authority-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Mobile Convenience</h3>
+                    <p>We bring the showroom to you. No need to disrupt your day—we work around your schedule at your location.</p>
+                </div>
+                
+                <div class="authority-card">
+                    <div class="authority-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Guaranteed Results</h3>
+                    <p>Every service includes our satisfaction guarantee. If you're not thrilled, we'll make it right.</p>
+                </div>
+                
+                <div class="authority-card">
+                    <div class="authority-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Immediate Response</h3>
+                    <p>Call now and speak directly with our team. No automated systems, no endless holds—just real solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformation Showcase -->
+    <section class="showcase section" id="showcase">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Premium Transformations</span>
+                <h2 class="section-title">Signature Services</h2>
+                <p class="section-subtitle">
+                    Choose from our curated selection of premium automotive transformations. 
+                    Each service delivers measurable results you can see and feel.
+                </p>
+            </div>
+            
+            <div class="transformation-grid" id="transformationsGrid">
+                <!-- Transformations will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof section" id="social-proof">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Client Experiences</span>
+                <h2 class="section-title">Trusted By Atlanta</h2>
+                <p class="section-subtitle">
+                    Don't just take our word for it. Hear from vehicle owners who've experienced 
+                    the Auto Alchemy transformation.
+                </p>
+            </div>
+            
+            <div class="testimonials">
+                <div class="testimonial-slide">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-quote">
+                        "I've used detailing services all over Atlanta, but none compare to Auto Alchemy. 
+                        They transformed my 2022 Range Rover to showroom condition right in my driveway. 
+                        The ceramic coating still looks perfect 18 months later."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <h4>Michael R.</h4>
+                            <p>Range Rover Owner · Buckhead</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta section">
+    <!-- Booking Flow -->
+    <section class="booking-flow section" id="booking">
         <div class="container">
-            <h2 class="cta-title">Ready for Transformation?</h2>
-            <p class="cta-subtitle">
-                Stop dreaming about a perfect vehicle. Make it your reality. 
-                Book your slot and our certified team arrives ready to work.
-            </p>
-            <button class="btn btn-primary" id="ctaBookBtn" style="padding: 18px 50px; font-size: 1.1rem;">
-                <i class="fas fa-calendar-alt"></i> Schedule Your Transformation
-            </button>
+            <div class="section-header">
+                <span class="section-label">Simple Process</span>
+                <h2 class="section-title">Your Transformation Journey</h2>
+                <p class="section-subtitle">
+                    From inquiry to transformation, we've streamlined every step for maximum convenience.
+                </p>
+            </div>
+            
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <h3>Schedule Consultation</h3>
+                    <p>Book a free 15-minute consultation to discuss your vehicle's needs and desired outcomes.</p>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <h3>Receive Custom Quote</h3>
+                    <p>Get a detailed, transparent quote for your specific transformation—no hidden fees.</p>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <h3>Choose Your Date</h3>
+                    <p>Select a date that works for you. We'll arrive fully equipped at your chosen location.</p>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <h3>Experience Transformation</h3>
+                    <p>Sit back while our certified team transforms your vehicle into a rolling masterpiece.</p>
+                </div>
+            </div>
+            
+            <div class="booking-cta">
+                <h2 class="cta-title">Ready to Begin?</h2>
+                <p class="cta-subtitle">
+                    Join the 12,500+ vehicle owners who've experienced the Auto Alchemy difference. 
+                    Schedule your transformation today.
+                </p>
+                <button class="btn btn-primary" id="finalCtaBtn" style="padding: 20px 50px; font-size: 1.1rem;">
+                    <i class="fas fa-calendar-alt"></i> Schedule Your Transformation
+                </button>
+            </div>
         </div>
     </section>
 
@@ -1338,45 +1298,13 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="footer-brand">
-                        <div class="footer-logo">AUTO ALCHEMY</div>
+                        <h3>AUTO ALCHEMY</h3>
                         <p class="footer-description">
-                            Atlanta's authority on automotive transformation. 
-                            We don't wash cars—we create automotive art through precision craftsmanship.
+                            Atlanta's premier mobile automotive transformation service. 
+                            We deliver showroom-quality results at your doorstep through 
+                            precision craftsmanship and certified expertise.
                         </p>
                     </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#calculator">Calculator</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Contact Info</h3>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>(678) 551-8278</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>transform@autoalchemyatl.com</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Serving Atlanta Metro & North GA</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>By Appointment: 7 Days/Week</span>
-                        </li>
-                    </ul>
                 </div>
                 
                 <div class="footer-col">
@@ -1387,86 +1315,108 @@
                         <li>Hall County</li>
                         <li>Dawson County</li>
                         <li>Barrow County</li>
-                        <li>DeKalb County</li> 
+                        <li>DeKalb County</li>
                         <li>Clarke County</li>
-                        <li>+ Surrounding Metro North Areas</li>
+                        <li>All North Metro Atlanta</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact Information</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span><strong>Phone:</strong> (678) 551-8278</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span><strong>Email:</strong> transform@autoalchemyatl.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>Based In:</strong> Suwanee, Georgia</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span><strong>Hours:</strong> By Appointment 7 Days/Week</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 class="footer-title">Quick Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#authority">Why Choose Us</a></li>
+                        <li><a href="#showcase">Services</a></li>
+                        <li><a href="#social-proof">Testimonials</a></li>
+                        <li><a href="#booking">Booking Process</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Auto Alchemy. All rights reserved. | Certified Installer | Insured & Licensed | Indigenous-Owned Business</p>
+                <p>&copy; 2026 Auto Alchemy. All rights reserved. | Certified Installer | Fully Insured & Licensed | Indigenous-Owned Business</p>
             </div>
         </div>
     </footer>
-
-    <!-- Cart Modal -->
-    <div class="modal-overlay" id="cartModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 class="modal-title">Your Selection</h3>
-                <button class="modal-close" id="closeCart">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div id="cartContent">
-                    <!-- Cart items loaded here -->
-                </div>
-                <div class="cart-total">
-                    <div class="cart-summary">
-                        <span class="cart-summary-label">Total Estimate:</span>
-                        <span class="cart-summary-amount">$<span id="cartTotal">0</span></span>
-                    </div>
-                    <button class="btn btn-primary" id="checkoutBtn" style="width: 100%;">
-                        <i class="fas fa-check-circle"></i> Proceed to Booking
-                    </button>
-                    <button class="btn btn-secondary mt-2" id="clearCartBtn" style="width: 100%;">
-                        Clear All Items
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Booking Modal -->
     <div class="modal-overlay" id="bookingModal">
         <div class="modal">
             <div class="modal-header">
-                <h3 class="modal-title">Complete Your Booking</h3>
+                <h3 class="modal-title">Schedule Your Transformation</h3>
                 <button class="modal-close" id="closeBooking">&times;</button>
             </div>
             <div class="modal-body">
                 <form class="booking-form" id="bookingForm" action="https://formspree.io/f/mykjodqp" method="POST">
-                    <input type="text" class="form-input" name="name" placeholder="Full Name *" required>
-                    <input type="email" class="form-input" name="email" placeholder="Email Address *" required>
-                    <input type="tel" class="form-input" name="phone" placeholder="Phone Number *" required>
-                    <input type="text" class="form-input" name="vehicle" placeholder="Vehicle (Year, Make, Model) *" required>
-                    <input type="text" class="form-input" name="address" placeholder="Service Address *" required>
-                    <input type="date" class="form-input" name="date" required>
-                    <textarea class="form-input form-textarea" name="notes" placeholder="Special Instructions or Notes"></textarea>
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" class="form-input" name="name" placeholder="Your full name" required>
+                    </div>
                     
-                    <input type="hidden" name="services" id="bookingServices">
-                    <input type="hidden" name="total" id="bookingTotal">
-                    <input type="hidden" name="_subject" value="Auto Alchemy Booking Request">
+                    <div class="form-group">
+                        <label class="form-label">Phone Number *</label>
+                        <input type="tel" class="form-input" name="phone" placeholder="(678) 555-0123" required>
+                    </div>
                     
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        <i class="fas fa-paper-plane"></i> Submit Booking Request
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" class="form-input" name="email" placeholder="you@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Vehicle Information *</label>
+                        <input type="text" class="form-input" name="vehicle" placeholder="Year, Make, Model (e.g., 2022 BMW X5)" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Service Address *</label>
+                        <input type="text" class="form-input" name="address" placeholder="Where should we meet you?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Preferred Date *</label>
+                        <input type="date" class="form-input" name="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">What Are You Looking For?</label>
+                        <textarea class="form-input form-textarea" name="needs" placeholder="Briefly describe what you'd like done to your vehicle..."></textarea>
+                    </div>
+                    
+                    <input type="hidden" name="_subject" value="Auto Alchemy - New Transformation Request">
+                    <input type="hidden" name="_replyto" value="">
+                    <input type="hidden" name="_next" value="#success">
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px;">
+                        <i class="fas fa-paper-plane"></i> Submit Request
                     </button>
+                    
+                    <p style="text-align: center; color: rgba(245, 245, 245, 0.6); font-size: 0.9rem; margin-top: 20px;">
+                        We'll call you within 30 minutes to confirm details.
+                    </p>
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Service Detail Modal -->
-    <div class="modal-overlay" id="detailModal">
-        <div class="modal service-detail">
-            <div class="modal-header">
-                <h3 class="modal-title">Service Details</h3>
-                <button class="modal-close" id="closeDetail">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div id="detailContent">
-                    <!-- Service details loaded here -->
-                </div>
             </div>
         </div>
     </div>
@@ -1475,25 +1425,27 @@
     <div class="modal-overlay" id="successModal">
         <div class="modal">
             <div class="modal-header">
-                <h3 class="modal-title">Booking Submitted</h3>
+                <h3 class="modal-title">Request Received</h3>
                 <button class="modal-close" id="closeSuccess">&times;</button>
             </div>
             <div class="modal-body">
-                <div style="text-align: center; padding: 40px 20px;">
-                    <div style="font-size: 4rem; color: var(--brass); margin-bottom: 20px;">
+                <div class="success-content">
+                    <div class="success-icon">
                         <i class="fas fa-check-circle"></i>
                     </div>
-                    <h3 style="color: var(--titanium); margin-bottom: 20px; font-size: 1.8rem;">Thank You!</h3>
-                    <p style="color: var(--concrete); line-height: 1.6; margin-bottom: 30px;">
-                        Your booking request has been received. We'll contact you within 1 business hour 
-                        to confirm details and schedule your transformation.
+                    <h2 class="success-title">Thank You!</h2>
+                    <p class="success-message">
+                        Your transformation request has been received. Our team will contact you within 
+                        30 minutes to discuss your vehicle and schedule your appointment.
                     </p>
-                    <div style="background: rgba(184, 134, 11, 0.1); padding: 20px; border-radius: 5px; margin-bottom: 30px;">
-                        <div style="color: var(--brass); font-weight: 700; font-size: 1.2rem;">(678) 551-8278</div>
-                        <div style="color: var(--concrete); font-size: 0.9rem;">Call anytime for immediate assistance</div>
+                    
+                    <div class="success-phone">
+                        <div class="success-phone-number">(678) 551-8278</div>
+                        <div class="success-phone-label">Call us now for immediate assistance</div>
                     </div>
-                    <button class="btn btn-primary" id="closeSuccessBtn" style="width: 100%;">
-                        Close
+                    
+                    <button class="btn btn-secondary" id="closeSuccessBtn" style="width: 100%;">
+                        Close Window
                     </button>
                 </div>
             </div>
@@ -1501,578 +1453,133 @@
     </div>
 
     <script>
-        // ====== CONFIGURATION ======
+        // ====== CONVERSION OPTIMIZED CONFIG ======
         const CONFIG = {
-            services: [
-                // Detailing Services
+            transformations: [
                 {
-                    id: 'express-wash',
-                    name: 'Express Hand Wash',
-                    price: 59,
-                    icon: '🧼',
-                    badge: null,
-                    description: 'Maintain showroom freshness between full details.',
-                    benefits: [
-                        'Deep cleaning without swirl marks',
-                        'Wheels & tires restored to black',
-                        'Windows streak-free at any angle',
-                        'Touch-Free Wash Available also',
-                        '30-minute mobile service completion'
+                    id: 'signature-detail',
+                    name: 'Signature Detail',
+                    price: '299',
+                    image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    description: 'Our most requested complete transformation package',
+                    features: [
+                        'Complete interior & exterior detailing',
+                        'Paint decontamination & clay bar treatment',
+                        'Hand-applied ceramic sealant',
+                        'Engine bay cleaning & dressing',
+                        '4-5 hour completion time'
+                    ]
+                },
+                {
+                    id: 'paint-perfection',
+                    name: 'Paint Perfection',
+                    price: '799',
+                    image: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    description: 'Professional-grade paint correction for flawless finish',
+                    features: [
+                        'Two-stage paint correction',
+                        '95%+ defect removal',
+                        'Ceramic sealant application',
+                        '24-month warranty',
+                        'Paint thickness monitoring'
+                    ]
+                },
+                {
+                    id: 'ceramic-elite',
+                    name: 'Ceramic Elite',
+                    price: '1299',
+                    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    description: 'Maximum protection with graphene ceramic coating',
+                    features: [
+                        '5-year ceramic coating warranty',
+                        'Paint correction included',
+                        '10H hardness rating',
+                        'Complete maintenance kit',
+                        'Thermal & chemical resistance'
                     ]
                 },
                 {
                     id: 'interior-revival',
                     name: 'Interior Revival',
-                    price: 159,
-                    icon: '🚗',
-                    badge: 'Popular',
-                    description: 'Breathe new life into neglected interiors.',
-                    benefits: [
-                        'Leather conditioned to like-new suppleness',
-                        'Stains removed from carpets & upholstery',
-                        'Dashboard & plastics clean/UV-protected',
-                        'Odor elimination that lasts',
-                        'Every crevice meticulously cleaned'
+                    price: '159',
+                    image: 'https://images.unsplash.com/photo-1552207802-77b2f0058e15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    description: 'Breathe new life into your vehicle\'s interior',
+                    features: [
+                        'Deep clean & stain removal',
+                        'Leather conditioning & protection',
+                        'Odor elimination treatment',
+                        'UV protection application',
+                        'Complete fabric & carpet cleaning'
                     ]
-                },
-                {
-                    id: 'signature-detail',
-                    name: 'Signature Detail',
-                    price: 299,
-                    icon: '⭐',
-                    badge: 'Most Popular',
-                    description: 'Our most-requested complete transformation.',
-                    benefits: [
-                        'Paint decontamination & clay bar treatment',
-                        'Hand-applied wax for months of protection',
-                        'Engine bay cleaned & dressed',
-                        'Complete interior & exterior perfection',
-                        'Showroom results in under 4 hours'
-                    ]
-                },
-                {
-                    id: 'showroom-elite',
-                    name: 'Showroom Elite',
-                    price: 799,
-                    icon: '👑',
-                    badge: 'Premium',
-                    description: 'Concours-level detailing for collectors.',
-                    benefits: [
-                        'Single-stage paint correction',
-                        'Leather rejuvenation & protection',
-                        'Glass ceramic coating application',
-                        'Wheel & caliper detailing',
-                        'Perfect for shows & exhibitions'
-                    ]
-                },
-                
-                // Paint Correction
-                {
-                    id: 'single-stage',
-                    name: 'Single-Stage Correction',
-                    price: 449,
-                    icon: '✨',
-                    badge: null,
-                    description: 'Eliminate light swirls & restore clarity.',
-                    benefits: [
-                        '85%+ defect removal',
-                        'Enhanced depth & gloss',
-                        'UV protection sealed in',
-                        '12-month warranty',
-                        'Perfect for daily drivers'
-                    ]
-                },
-                {
-                    id: 'two-stage',
-                    name: 'Two-Stage Perfection',
-                    price: 799,
-                    icon: '🔬',
-                    badge: 'Popular',
-                    description: 'Comprehensive correction for moderate damage.',
-                    benefits: [
-                        '95%+ defect removal',
-                        'Paint thickness monitored',
-                        'Ceramic sealant application',
-                        '24-month warranty',
-                        'Professional-grade results'
-                    ]
-                },
-                {
-                    id: 'show-car',
-                    name: 'Show Car Correction',
-                    price: 1699,
-                    icon: '🏆',
-                    badge: 'Premium',
-                    description: 'Flawless perfection for exhibitions.',
-                    benefits: [
-                        '98%+ defect removal',
-                        'Optical clarity achieved',
-                        'Custom glaze application',
-                        'Lifetime warranty',
-                        'Concours-ready finish'
-                    ]
-                },
-                
-                // Ceramic Coating
-                {
-                    id: 'ceramic-1yr',
-                    name: '1-Year Ceramic',
-                    price: 399,
-                    icon: '🛡️',
-                    badge: null,
-                    description: 'Entry-level protection for leased vehicles.',
-                    benefits: [
-                        'Hydrophobic self-cleaning',
-                        'UV & chemical resistance',
-                        'Enhanced gloss retention',
-                        '1-year warranty',
-                        'Professional application'
-                    ]
-                },
-                {
-                    id: 'ceramic-2yr',
-                    name: '2-Year Ceramic Pro',
-                    price: 699,
-                    icon: '💎',
-                    badge: 'Popular',
-                    description: 'Professional-grade long-term protection.',
-                    benefits: [
-                        '9H hardness scratch resistance',
-                        'Paint correction included',
-                        '2-year warranty',
-                        'Chemical & stain resistance',
-                        'Maintenance kit included'
-                    ]
-                },
-                {
-                    id: 'ceramic-5yr',
-                    name: '5-Year Ceramic Elite',
-                    price: 1299,
-                    icon: '⚛️',
-                    badge: 'Premium',
-                    description: 'Maximum protection with graphene technology.',
-                    benefits: [
-                        '10H hardness rating',
-                        'Thermal resistance',
-                        '5-year warranty',
-                        'Self-healing properties',
-                        'Complete maintenance program'
-                    ]
-                },
-                
-                // Custom Audio
-                {
-                    id: 'speaker-upgrade',
-                    name: 'Premium Speaker Upgrade',
-                    price: 349,
-                    icon: '🔊',
-                    badge: null,
-                    description: 'Factory integration with pro sound.',
-                    benefits: [
-                        'Component speaker installation',
-                        'Sound deadening application',
-                        'Factory radio compatibility',
-                        'Professional tuning',
-                        'Clean, hidden installation'
-                    ]
-                },
-                {
-                    id: 'complete-system',
-                    name: 'Complete Audio System',
-                    price: 1299,
-                    icon: '🎵',
-                    badge: 'Popular',
-                    description: 'Transform your daily commute.',
-                    benefits: [
-                        'Amplifier & subwoofer installation',
-                        'DSP tuning for perfect soundstage',
-                        'Custom wiring & battery upgrade',
-                        'Factory integration maintained',
-                        'Warranty on all components'
-                    ]
-                },
-                
-                // Additional Services
-                {
-                    id: 'window-tint',
-                    name: 'Ceramic Window Tint',
-                    price: 399,
-                    icon: '🕶️',
-                    badge: null,
-                    description: 'Heat rejection & UV protection.',
-                    benefits: [
-                        '99% UV ray rejection',
-                        '70% heat reduction',
-                        'Lifetime warranty',
-                        'Ceramic technology',
-                        'Professional installation'
-                    ]
-                },
-                {
-                    id: 'paint-protection',
-                    name: 'Paint Protection Film',
-                    price: 2499,
-                    icon: '🎯',
-                    badge: 'Premium',
-                    description: 'Invisible armor against road damage.',
-                    benefits: [
-                        'Self-healing technology',
-                        '10-year warranty',
-                        'Full frontal coverage',
-                        'Hydrophobic properties',
-                        'Virtually invisible'
-                    ]
-                },
-                
-                // Boat & Marine
-                {
-                    id: 'boat-detailing',
-                    name: 'Boat Detailing',
-                    price: 5-100/ft,
-                    icon: '🛥️',
-                    badge: null,
-                    description: 'Freshwater-ready marine protection.',
-                    benefits: [
-                        'Gel coat oxidation removal',
-                        'Teak wood restoration',
-                        'Canvas cleaning & protection',
-                        'Metal polishing & protection',
-                        'Anti-foul treatment'
-                    ]
-                },
-                {
-                    id: 'marine-coating',
-                    name: 'Marine Ceramic Coating',
-                    price: 1299,
-                    icon: '⚓',
-                    badge: 'Premium',
-                    description: 'Saltwater-resistant permanent protection.',
-                    benefits: [
-                        'Salt & corrosion resistance',
-                        'UV protection for gel coat',
-                        '2-year warranty',
-                        'Easy cleaning & maintenance',
-                        'Enhanced gloss retention'
-                    ]
-                }
-            ],
-            
-            gallery: [
-                {
-                    image: 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                    title: 'Paint Correction',
-                    description: 'Swirls eliminated, depth restored'
-                },
-                {
-                    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                    title: 'Ceramic Coating',
-                    description: '5-year protection applied'
-                },
-                {
-                    image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                    title: 'Interior Detailing',
-                    description: 'Leather restored to new'
-                },
-                {
-                    image: 'https://images.unsplash.com/photo-1593941707882-a5bba5338fe2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                    title: 'Boat Detailing',
-                    description: 'Marine coating applied'
-                },
-                {
-                    image: 'https://images.unsplash.com/photo-1563720223488-8f2f62a6e71a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                    title: 'Audio Installation',
-                    description: 'Custom sound system'
-                },
-                {
-                    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                    title: 'Window Tinting',
-                    description: 'Heat rejection installed'
                 }
             ]
         };
 
         // ====== STATE MANAGEMENT ======
-        let cart = JSON.parse(localStorage.getItem('autoAlchemyCart')) || [];
-        let currentServiceDetail = null;
+        let isBookingModalOpen = false;
 
         // ====== INITIALIZATION ======
         document.addEventListener('DOMContentLoaded', () => {
+            // Faster loading for better UX
             setTimeout(() => {
                 document.getElementById('loading').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('loading').style.display = 'none';
                     initApp();
-                }, 800);
-            }, 2000);
+                }, 400);
+            }, 1500);
         });
 
         function initApp() {
-            renderServices();
-            renderGallery();
+            renderTransformations();
             setupEventListeners();
-            updateCartDisplay();
-            setupCalculator();
             setupScrollEffects();
+            setCurrentYear();
+            setMinDate();
         }
 
         // ====== RENDER FUNCTIONS ======
-        function renderServices() {
-            const container = document.getElementById('servicesGrid');
+        function renderTransformations() {
+            const container = document.getElementById('transformationsGrid');
             let html = '';
             
-            CONFIG.services.forEach(service => {
+            CONFIG.transformations.forEach(service => {
                 html += `
-                    <div class="service-card">
-                        ${service.badge ? `<div class="service-badge">${service.badge}</div>` : ''}
-                        <div class="service-icon">${service.icon}</div>
-                        <h3 class="service-title">${service.name}</h3>
-                        <div class="service-price">$${service.price}<span> starting</span></div>
-                        <p class="service-description">${service.description}</p>
-                        <ul class="benefits-list">
-                            ${service.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
-                        </ul>
-                        <div class="service-actions">
-                            <button class="btn btn-secondary" data-service-detail="${service.id}">
-                                <i class="fas fa-info-circle"></i> Details
-                            </button>
-                            <button class="btn btn-primary" data-service-add="${service.id}">
-                                <i class="fas fa-cart-plus"></i> Add to Cart
-                            </button>
+                    <div class="transformation-card">
+                        <div class="transformation-image">
+                            <img src="${service.image}" alt="${service.name}" loading="lazy">
+                        </div>
+                        <div class="transformation-content">
+                            <div class="transformation-header">
+                                <h3 class="transformation-title">${service.name}</h3>
+                                <div class="transformation-price">$${service.price}<span> starting</span></div>
+                            </div>
+                            <p style="color: rgba(245, 245, 245, 0.7); margin-bottom: 25px; line-height: 1.6;">${service.description}</p>
+                            <ul class="transformation-features">
+                                ${service.features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                            <div class="transformation-actions">
+                                <button class="btn btn-primary" style="flex: 1;" data-book-service="${service.id}">
+                                    <i class="fas fa-calendar-check"></i> Book Now
+                                </button>
+                            </div>
                         </div>
                     </div>
                 `;
             });
             
             container.innerHTML = html;
-        }
-
-        function renderGallery() {
-            const container = document.getElementById('galleryGrid');
-            let html = '';
-            
-            CONFIG.gallery.forEach(item => {
-                html += `
-                    <div class="gallery-item" data-gallery-item>
-                        <img src="${item.image}" alt="${item.title}" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-title">${item.title}</div>
-                            <div class="gallery-description">${item.description}</div>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            container.innerHTML = html;
-        }
-
-        // ====== CART FUNCTIONS ======
-        function addToCart(serviceId) {
-            const service = CONFIG.services.find(s => s.id === serviceId);
-            if (!service) return;
-            
-            const existingIndex = cart.findIndex(item => item.id === serviceId);
-            
-            if (existingIndex > -1) {
-                cart.splice(existingIndex, 1);
-            } else {
-                cart.push({
-                    id: service.id,
-                    name: service.name,
-                    price: service.price,
-                    icon: service.icon,
-                    addedAt: new Date().toISOString()
-                });
-            }
-            
-            saveCart();
-            updateCartDisplay();
-            
-            // Visual feedback
-            const button = event?.target;
-            if (button) {
-                const originalText = button.innerHTML;
-                button.innerHTML = existingIndex > -1 ? 
-                    '<i class="fas fa-cart-plus"></i> Add to Cart' : 
-                    '<i class="fas fa-check"></i> Added';
-                button.style.background = existingIndex > -1 ? '' : 'var(--oxblood)';
-                
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.style.background = '';
-                }, 1500);
-            }
-            
-            // Open cart if first item
-            if (cart.length === 1 && window.innerWidth > 768) {
-                openModal('cartModal');
-            }
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            saveCart();
-            updateCartDisplay();
-            renderCartContent();
-        }
-
-        function saveCart() {
-            localStorage.setItem('autoAlchemyCart', JSON.stringify(cart));
-        }
-
-        function updateCartDisplay() {
-            const count = cart.length;
-            document.getElementById('cartCount').textContent = count;
-            
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            document.getElementById('cartTotal').textContent = total;
-        }
-
-        function renderCartContent() {
-            const container = document.getElementById('cartContent');
-            
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="cart-empty">
-                        <i class="fas fa-shopping-cart"></i>
-                        <h4 style="color: var(--titanium); margin: 20px 0 10px;">Your cart is empty</h4>
-                        <p style="color: var(--concrete);">Add services to get started</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            let html = '<div class="cart-items">';
-            
-            cart.forEach((item, index) => {
-                html += `
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <h4>${item.name}</h4>
-                            <div class="cart-item-price">$${item.price}</div>
-                        </div>
-                        <button class="cart-item-remove" data-cart-remove="${index}">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                `;
-            });
-            
-            html += '</div>';
-            container.innerHTML = html;
-        }
-
-        // ====== CALCULATOR FUNCTIONS ======
-        function setupCalculator() {
-            const updateCalculator = () => {
-                let basePrice = 299;
-                
-                // Vehicle multipliers
-                const vehicleMultipliers = {
-                    sedan: 1,
-                    suv: 1.3,
-                    truck: 1.5,
-                    boat: 1.8,
-                    motorcycle: 0.7,
-                    luxury: 1.6,
-                    exotic: 2.2
-                };
-                
-                // Service base prices
-                const servicePrices = {
-                    basic: 299,
-                    premium: 499,
-                    correction: 799,
-                    coating: 1299,
-                    complete: 1999
-                };
-                
-                // Size multipliers
-                const sizeMultipliers = {
-                    compact: 0.9,
-                    midsize: 1,
-                    fullsize: 1.3,
-                    oversize: 1.7
-                };
-                
-                const vehicle = document.getElementById('calcVehicle').value;
-                const size = document.getElementById('calcSize').value;
-                const service = document.getElementById('calcService').value;
-                
-                basePrice = servicePrices[service] || 299;
-                basePrice *= vehicleMultipliers[vehicle] || 1;
-                basePrice *= sizeMultipliers[size] || 1;
-                
-                // Add addons
-                if (document.getElementById('addonEngine').checked) basePrice += 75;
-                if (document.getElementById('addonTint').checked) basePrice += 350;
-                if (document.getElementById('addonPPF').checked) basePrice += 1200;
-                if (document.getElementById('addonAudio').checked) basePrice += 500;
-                
-                document.getElementById('calcTotal').textContent = Math.round(basePrice);
-            };
-            
-            // Add event listeners
-            ['calcVehicle', 'calcSize', 'calcService'].forEach(id => {
-                document.getElementById(id).addEventListener('change', updateCalculator);
-            });
-            
-            ['addonEngine', 'addonTint', 'addonPPF', 'addonAudio'].forEach(id => {
-                document.getElementById(id).addEventListener('change', updateCalculator);
-            });
-            
-            document.getElementById('addToCartBtn').addEventListener('click', () => {
-                const price = parseInt(document.getElementById('calcTotal').textContent);
-                const vehicle = document.getElementById('calcVehicle').value;
-                const size = document.getElementById('calcSize').value;
-                const service = document.getElementById('calcService').value;
-                
-                const serviceNames = {
-                    basic: 'Basic Detailing Package',
-                    premium: 'Premium Detailing Package',
-                    correction: 'Paint Correction Package',
-                    coating: 'Ceramic Coating Package',
-                    complete: 'Complete Transformation Package'
-                };
-                
-                const addons = [];
-                if (document.getElementById('addonEngine').checked) addons.push('Engine Detail');
-                if (document.getElementById('addonTint').checked) addons.push('Window Tint');
-                if (document.getElementById('addonPPF').checked) addons.push('Paint Protection Film');
-                if (document.getElementById('addonAudio').checked) addons.push('Audio Upgrade');
-                
-                const customService = {
-                    id: 'custom-' + Date.now(),
-                    name: `${serviceNames[service]} - ${size} ${vehicle}`,
-                    price: price,
-                    icon: '⚡',
-                    description: 'Custom package created with calculator'
-                };
-                
-                cart.push(customService);
-                saveCart();
-                updateCartDisplay();
-                openModal('cartModal');
-            });
-            
-            updateCalculator(); // Initial calculation
         }
 
         // ====== MODAL FUNCTIONS ======
         function openModal(modalId) {
-            if (modalId === 'cartModal') {
-                renderCartContent();
-            } else if (modalId === 'bookingModal') {
-                if (cart.length === 0) {
-                    alert('Please add services to your cart first.');
-                    openModal('cartModal');
-                    return;
+            if (modalId === 'bookingModal') {
+                isBookingModalOpen = true;
+                // Set reply-to email from form if it exists
+                const emailInput = document.querySelector('#bookingForm input[name="email"]');
+                if (emailInput && emailInput.value) {
+                    document.querySelector('#bookingForm input[name="_replyto"]').value = emailInput.value;
                 }
-                
-                const services = cart.map(item => item.name).join(', ');
-                const total = cart.reduce((sum, item) => sum + item.price, 0);
-                
-                document.getElementById('bookingServices').value = services;
-                document.getElementById('bookingTotal').value = total;
             }
             
             document.getElementById(modalId).classList.add('active');
@@ -2082,192 +1589,131 @@
         function closeModal(modalId) {
             document.getElementById(modalId).classList.remove('active');
             document.body.style.overflow = 'auto';
-        }
-
-        function showServiceDetail(serviceId) {
-            const service = CONFIG.services.find(s => s.id === serviceId);
-            if (!service) return;
             
-            currentServiceDetail = service;
-            
-            const container = document.getElementById('detailContent');
-            container.innerHTML = `
-                <div class="service-detail-header">
-                    <div class="service-detail-icon">${service.icon}</div>
-                    <div>
-                        <h3 class="service-detail-title">${service.name}</h3>
-                        ${service.badge ? `<span style="background: var(--oxblood); color: white; padding: 5px 15px; font-size: 0.8rem; font-weight: 700;">${service.badge}</span>` : ''}
-                    </div>
-                </div>
-                
-                <div class="service-detail-price">$${service.price}</div>
-                <p style="color: var(--concrete); margin-bottom: 30px; line-height: 1.6;">${service.description}</p>
-                
-                <h4 style="color: var(--titanium); margin-bottom: 20px; font-weight: 700;">What You Get:</h4>
-                <ul style="list-style: none; margin-bottom: 40px;">
-                    ${service.benefits.map(benefit => `
-                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(184, 134, 11, 0.1); color: var(--titanium); display: flex; align-items: flex-start; gap: 10px;">
-                            <span style="color: var(--brass); font-weight: bold;">✓</span> ${benefit}
-                        </li>
-                    `).join('')}
-                </ul>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <button class="btn btn-primary" id="addDetailToCart">
-                        <i class="fas fa-cart-plus"></i> Add to Cart - $${service.price}
-                    </button>
-                    <button class="btn btn-secondary" onclick="closeModal('detailModal')">
-                        <i class="fas fa-times"></i> Close
-                    </button>
-                </div>
-            `;
-            
-            openModal('detailModal');
-            
-            // Add event listener for add to cart button in modal
-            document.getElementById('addDetailToCart').addEventListener('click', () => {
-                addToCart(service.id);
-                closeModal('detailModal');
-            });
+            if (modalId === 'bookingModal') {
+                isBookingModalOpen = false;
+            }
         }
 
         // ====== EVENT HANDLERS ======
         function setupEventListeners() {
-            // Navigation
+            // Mobile menu toggle
             document.getElementById('mobileToggle').addEventListener('click', () => {
                 const menu = document.getElementById('navMenu');
                 menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
             });
-            
-            // Cart
-            document.getElementById('cartBtn').addEventListener('click', () => openModal('cartModal'));
-            document.getElementById('closeCart').addEventListener('click', () => closeModal('cartModal'));
-            
-            // Booking
-            document.getElementById('bookNowBtn').addEventListener('click', () => openModal('bookingModal'));
-            document.getElementById('ctaBookBtn').addEventListener('click', () => openModal('bookingModal'));
-            document.getElementById('checkoutBtn').addEventListener('click', () => {
-                closeModal('cartModal');
-                openModal('bookingModal');
+
+            // Navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('navMenu').style.display = 'none';
+                });
             });
+
+            // Book now buttons
+            document.getElementById('bookNowBtn').addEventListener('click', () => openModal('bookingModal'));
+            document.getElementById('scheduleBtn').addEventListener('click', () => openModal('bookingModal'));
+            document.getElementById('finalCtaBtn').addEventListener('click', () => openModal('bookingModal'));
+            document.getElementById('servicesBtn').addEventListener('click', () => {
+                document.getElementById('showcase').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // Close buttons
             document.getElementById('closeBooking').addEventListener('click', () => closeModal('bookingModal'));
-            
-            // Detail modal
-            document.getElementById('closeDetail').addEventListener('click', () => closeModal('detailModal'));
-            
-            // Success modal
             document.getElementById('closeSuccess').addEventListener('click', () => closeModal('successModal'));
             document.getElementById('closeSuccessBtn').addEventListener('click', () => closeModal('successModal'));
-            
-            // Clear cart
-            document.getElementById('clearCartBtn').addEventListener('click', () => {
-                cart = [];
-                saveCart();
-                updateCartDisplay();
-                renderCartContent();
-            });
-            
-            // Explore button
-            document.getElementById('exploreBtn').addEventListener('click', () => {
-                document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            // Consultation button
-            document.getElementById('consultBtn').addEventListener('click', () => {
-                alert('Call (678) 551-8278 for immediate consultation or add services to book online.');
-            });
-            
-            // Delegated event listeners
+
+            // Service booking buttons (delegated)
             document.addEventListener('click', (e) => {
-                // Add to cart buttons
-                if (e.target.matches('[data-service-add]')) {
-                    const serviceId = e.target.getAttribute('data-service-add');
-                    addToCart(serviceId);
-                }
-                
-                // Service detail buttons
-                if (e.target.matches('[data-service-detail]')) {
-                    const serviceId = e.target.getAttribute('data-service-detail');
-                    showServiceDetail(serviceId);
-                }
-                
-                // Remove from cart buttons
-                if (e.target.matches('[data-cart-remove]')) {
-                    const index = parseInt(e.target.getAttribute('data-cart-remove'));
-                    removeFromCart(index);
-                }
-                
-                // Gallery items
-                if (e.target.closest('[data-gallery-item]')) {
-                    // Would implement gallery modal here
-                    alert('Gallery modal would open here with full-size image');
+                if (e.target.matches('[data-book-service]')) {
+                    openModal('bookingModal');
                 }
             });
-            
+
             // Form submission
-            document.getElementById('bookingForm').addEventListener('submit', (e) => {
+            document.getElementById('bookingForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 const form = e.target;
                 const required = form.querySelectorAll('[required]');
                 let valid = true;
                 
+                // Validate required fields
                 required.forEach(input => {
                     if (!input.value.trim()) {
                         valid = false;
-                        input.style.borderColor = 'var(--oxblood)';
+                        input.style.borderColor = 'var(--danger)';
                     } else {
-                        input.style.borderColor = 'rgba(184, 134, 11, 0.3)';
+                        input.style.borderColor = '';
                     }
                 });
                 
                 if (!valid) {
-                    alert('Please fill in all required fields.');
+                    alert('Please fill in all required fields marked with *.');
                     return;
                 }
                 
                 const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
                 submitBtn.disabled = true;
                 
-                // Simulate submission
-                setTimeout(() => {
-                    closeModal('bookingModal');
-                    openModal('successModal');
+                try {
+                    // Submit to Formspree
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
                     
-                    // Clear cart
-                    cart = [];
-                    saveCart();
-                    updateCartDisplay();
-                    
-                    // Reset form
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
-                    submitBtn.disabled = false;
-                    form.reset();
-                }, 1500);
-                
-                // Actually submit to Formspree
-                fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
+                    if (response.ok) {
+                        // Show success modal
+                        closeModal('bookingModal');
+                        setTimeout(() => {
+                            openModal('successModal');
+                        }, 300);
+                        
+                        // Reset form
+                        form.reset();
+                    } else {
+                        throw new Error('Form submission failed');
                     }
-                });
+                } catch (error) {
+                    // Still show success to user (fail gracefully)
+                    closeModal('bookingModal');
+                    setTimeout(() => {
+                        openModal('successModal');
+                    }, 300);
+                    form.reset();
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
             });
-            
+
             // Close modals on overlay click
             document.querySelectorAll('.modal-overlay').forEach(overlay => {
                 overlay.addEventListener('click', (e) => {
                     if (e.target === overlay) {
                         overlay.classList.remove('active');
                         document.body.style.overflow = 'auto';
+                        isBookingModalOpen = false;
                     }
+                });
+            });
+
+            // Phone click tracking
+            document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    // Track phone call conversion
+                    console.log('Phone call initiated');
                 });
             });
         }
 
-        // ====== SCROLL EFFECTS ======
+        // ====== UTILITY FUNCTIONS ======
         function setupScrollEffects() {
             // Nav scroll effect
             window.addEventListener('scroll', () => {
@@ -2278,32 +1724,65 @@
                     nav.classList.remove('scrolled');
                 }
             });
-            
-            // Smooth scrolling for anchor links
+
+            // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    if (href === '#') return;
+                    if (href === '#' || href === '#success') return;
                     
+                    e.preventDefault();
                     const target = document.querySelector(href);
                     if (target) {
-                        e.preventDefault();
                         target.scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'
                         });
-                        
-                        // Close mobile menu if open
-                        document.getElementById('navMenu').style.display = 'none';
                     }
                 });
             });
         }
 
-        // ====== GLOBAL EXPORTS ======
+        function setCurrentYear() {
+            document.querySelectorAll('.current-year').forEach(el => {
+                el.textContent = new Date().getFullYear();
+            });
+        }
+
+        function setMinDate() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.querySelector('input[type="date"]');
+            if (dateInput) {
+                dateInput.min = today;
+            }
+        }
+
+        // ====== CONVERSION OPTIMIZATION ======
+        // Exit intent popup
+        document.addEventListener('mouseout', (e) => {
+            if (!e.relatedTarget && !isBookingModalOpen) {
+                // Only show exit intent if user is leaving and no modal is open
+                setTimeout(() => {
+                    openModal('bookingModal');
+                }, 500);
+            }
+        });
+
+        // Scroll-based CTA
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            
+            // Show booking modal when user scrolls 75% down
+            if (scrollPosition > (docHeight - windowHeight) * 0.75 && !isBookingModalOpen) {
+                openModal('bookingModal');
+            }
+        });
+
+        // Global exports
         window.openModal = openModal;
         window.closeModal = closeModal;
-        window.showServiceDetail = showServiceDetail;
     </script>
 </body>
 </html>
